@@ -15,6 +15,9 @@ const Nav = () => {
             <li className={styles.nav__list_item}>
                 <NavLink to="content">content</NavLink>
             </li>
+            <li className={styles.nav__list_item}>
+                <NavLink to="music">Музыка</NavLink>
+            </li>
             </ul>
          </nav>
     )
