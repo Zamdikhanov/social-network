@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
+.header {
+    width: 100%;
+    height: 100px;
+    background: rgb(253, 253, 254);
+    background: radial-gradient(circle, rgba(253, 253, 254, 1) 0%, rgba(182, 225, 237, 1) 45%, rgba(18, 115, 135, 1) 100%);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 1s ease-in-out;
+}
+
+.header h2 {
+    font-family: 'Codystar', cursive;
+    font-size: 64px;
+    color: rgba(18, 115, 135, 1);
+    text-shadow: 0 0 10px rgba(69, 122, 133, 0.5);
+    display: block;
+    letter-spacing: 2px;
+    transition: all 1s ease-in-out;
+}
+
+.header:hover {
+    background: radial-gradient(circle, rgba(253, 253, 254, 1) 0%, rgba(182, 225, 237, 1) 55%, rgba(18, 115, 135, 1) 100%);
+}
+
+.header:hover h2 {
+    letter-spacing: 6px;
+}

@@ -1,0 +1,16 @@
+.dialogs {
+    width: 100%;
+    display: flex;
+}
+
+.dialogList {
+    width: 40%;
+}
+
+.dialog {
+    background: #000;
+}
+
+.messages {
+    width: 60%;
+}
