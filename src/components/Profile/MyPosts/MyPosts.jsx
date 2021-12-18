@@ -5,8 +5,9 @@ import Post from "./Post/Post";
 const MyPosts = () => {
     return (
       <main className={styles.myPosts}>
-        <div>
-          <textarea></textarea>
+        <div className={styles.addpost}>
+          <h3>My Posts</h3>
+          <textarea className={styles.textarea}></textarea>
           <button>Add Post</button>
         </div>
         <Post message="My first Post" />

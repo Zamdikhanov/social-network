@@ -1,6 +1,7 @@
 :root {
     --main-dark-color: rgba(18, 115, 135, 1);
     --main-light-color: rgba(182, 225, 237, 1);
+    --accent-color: rgb(167,152,139);
 }
 
 * {
