@@ -11,6 +11,7 @@
 
 .nav__list_item {
     color: var(--main-dark-color);
+    overflow: hidden;
 }
 
 .nav__list_item a {
@@ -20,7 +21,6 @@
     font-weight: 700;
     text-decoration: none;
     /* border-bottom: 1px solid rgba(18, 115, 135, 0.1); */
-    border-left: 20px solid var(--main-light-color);
     letter-spacing: 1px;
     transition: all ease 0.3s;
 }
@@ -28,15 +28,15 @@
 .nav__list_item a:hover {
     letter-spacing: 2px;
     /* border-bottom: 1px solid var(--main-dark-color); */
-    border-left: 20px solid var(--accent-color);
+    transform: scale(1.1);
 }
 
 a.active_a {
     color: rgb(255, 255, 255);
     background: var(--main-dark-color);
-    border-left: 20px solid var(--main-dark-color);
+    display: block;
 }
 
 a.active_a:hover {
-    border-left: 20px solid var(--accent-color);
+    transform: scale(1.1);
 }

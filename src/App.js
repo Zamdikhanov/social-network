@@ -7,7 +7,8 @@ import Profile from './components/Profile/Profile';
 import Nav from './components/Nav/Nav';
 import Dialogs from './components/Dialogs/Dialogs';
 
-function App() {
+
+function App(props) {
     return (
         <BrowserRouter>
             <div className="App" >
@@ -15,9 +16,9 @@ function App() {
                 <Nav />
                 <main className="main" >
                     <Routes >
-                        <Route path="/" element={< Profile />} />
-                        <Route path="/dialogs" element={< Dialogs />} />
-                        <Route path="/profile" element={< Profile />} />
+                        {/* <Route path="/" element={< Profile state={props.state.profilePage}/>} /> */}
+                        <Route path="/dialogs/*" element={< Dialogs state={props.state.dialogPage}/>} />
+                        <Route path="/profile" element={< Profile state={props.state.profilePage}/>} />
                     </Routes >
                 </main>
             </div >

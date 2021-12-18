@@ -1,0 +1,11 @@
+.message {
+    display: block;
+    border-radius: 15px;
+    background: var(--main-light-color);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.likes {
+    display: blocks;
+}
