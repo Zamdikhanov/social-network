@@ -1,7 +1,8 @@
-const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
-const ADD_POST = 'ADD-POST';
-const DIALOG_CHANGE_TEXT_AREA = 'DIALOG-CHANGE-TEXT-AREA';
-const DIALOG_ADD_POST = 'DIALOG-ADD-POST';
+import dialogReducer from "./dialog-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
+
 
 let store = {
     _state: {
@@ -27,7 +28,10 @@ let store = {
                 { id: "3", name: "Bulat" },
             ],
             newPostText: '',
-        }
+        },
+        sidebar: {
+
+        },
     },
 
     getState() {
@@ -43,45 +47,15 @@ let store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case 'CHANGE-TEXT-AREA':
-                this._state.profilePage.newPostText = action.newText;
-                this._callSubscriber(this._state);
-                break;
-            case 'ADD-POST':
-                let newPost = {
-                    id: 5,
-                    message: this._state.profilePage.newPostText,
-                    likesCount: 0,
-                };
-                this._state.profilePage.postsData.push(newPost);
-                this._state.profilePage.newPostText = '';
-                this._callSubscriber(this._state);
-                break;
-            case 'DIALOG-CHANGE-TEXT-AREA':
-                this._state.dialogPage.newPostText = action.newText;
-                this._callSubscriber(this._state);
-                break;
-            case 'DIALOG-ADD-POST':
-                let dialogNewPost = {
-                    id: 5,
-                    message: this._state.dialogPage.newPostText,
-                    likesCount: 0,
-                };
-                this._state.dialogPage.usersPost.push(dialogNewPost);
-                this._state.dialogPage.newPostText = '';
-                this._callSubscriber(this._state);
-                break;
-            default:
-                {};
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
     }
 
 }
 
-export const changeTextActionCreator = (text) => ({ type: CHANGE_TEXT_AREA, newText: text });
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const changeDialogTextActionCreator = (text) => ({ type: DIALOG_CHANGE_TEXT_AREA, newText: text });
-export const addDialogPostActionCreator = () => ({ type: DIALOG_ADD_POST });
 
 export default store;
