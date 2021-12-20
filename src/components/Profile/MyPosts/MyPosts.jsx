@@ -1,5 +1,5 @@
 import React from "react";
-import { addDialogPostActionCreator, changeDialogTextActionCreator } from "../../../not_redux/dialog-reducer";
+import { addPostActionCreator, changeTextActionCreator } from "../../../not_redux/profile-reducer";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
@@ -10,11 +10,11 @@ const MyPosts = (props) => {
 
   let changeAreaValue = () => {
     let text = newPostElement.current.value;
-    props.dispatch(changeDialogTextActionCreator(text));
+    props.dispatch(changeTextActionCreator(text));
   }
 
   let addPost = () => {
-    props.dispatch(addDialogPostActionCreator());
+    props.dispatch(addPostActionCreator());
   }
 
   let posts = props.state.postsData.map(postsData => <Post postsData={postsData} />).reverse();
