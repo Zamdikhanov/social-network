@@ -1,7 +1,17 @@
 const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
 const ADD_POST = 'ADD-POST';
 
-const profileReducer = (state, action) => {
+let initialState = {
+    postsData: [
+        { id: 1, message: "Приступил к обучению по курсу IT-Kamasutra", likesCount: 5 },
+        { id: 2, message: "Второй день (15.12.21) Курс: Путь самурая", likesCount: 7 },
+        { id: 3, message: "Сидел с ребенком почти полных два дня", likesCount: 1 },
+        { id: 4, message: "Четвертый день (18.12.21) Курс: Путь самурая", likesCount: 5 },
+    ],
+    newPostText: '',
+};
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_TEXT_AREA:
             state.newPostText = action.newText;
