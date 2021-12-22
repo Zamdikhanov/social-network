@@ -19,17 +19,21 @@ let initialState = {
 const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
         case DIALOG_CHANGE_TEXT_AREA:
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText,
+            };
         case DIALOG_ADD_POST:
             let dialogNewPost = {
                 id: 5,
                 message: state.newPostText,
                 likesCount: 0,
             };
-            state.usersPost.push(dialogNewPost);
-            state.newPostText = '';
-            return state;
+            return {
+                ...state,
+                usersPost: [...state.usersPost, dialogNewPost],
+                newPostText: '',
+            };
         default:
             return state;;
     }

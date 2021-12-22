@@ -7,6 +7,7 @@ let initialState = {
         { id: 2, message: "Второй день (15.12.21) Курс: Путь самурая", likesCount: 7 },
         { id: 3, message: "Сидел с ребенком почти полных два дня", likesCount: 1 },
         { id: 4, message: "Четвертый день (18.12.21) Курс: Путь самурая", likesCount: 5 },
+        { id: 5, message: "Седьмой день (22.12.21) поключил Redux", likesCount: 5 },
     ],
     newPostText: '',
 };
@@ -14,17 +15,21 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_TEXT_AREA:
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                newPostText:  action.newText,
+            }
         case ADD_POST:
             let newPost = {
-                id: 5,
+                id: 6,
                 message: state.newPostText,
                 likesCount: 0,
             };
-            state.postsData.push(newPost);
-            state.newPostText = '';
-            return state;
+            return {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: '',
+            }
         default:
             return state;;
     }
