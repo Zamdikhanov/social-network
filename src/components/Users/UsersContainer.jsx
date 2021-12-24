@@ -9,7 +9,7 @@ let mapStateToProps = (state)  => ({
 });
 
 let mapDispatchToProps = (dispatch) => ({
-    onClickFollow: (user) => dispatch(toggleFollowAC(user)),
+    onClickFollow: (userId) => dispatch(toggleFollowAC(userId)),
     setUsers:(users) => dispatch(setUsersAC(users)),
 })
 
