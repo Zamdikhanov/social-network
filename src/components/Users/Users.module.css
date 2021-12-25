@@ -78,6 +78,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
+    color: white;
 }
 
 .fullName {
@@ -92,6 +93,7 @@
 
 .button {
     display: block;
+    width: 100%;
     padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
@@ -105,4 +107,8 @@
 
 .button:hover {
     background-color: var(--main-dark-color);
+}
+
+.link {
+    text-decoration: none;
 }

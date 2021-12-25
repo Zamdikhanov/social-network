@@ -1,5 +1,6 @@
 const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
 const ADD_POST = 'ADD-POST';
+const SET_PROFILE_USER = 'SET_PROFILE_USER';
 
 let initialState = {
     postsData: [
@@ -10,6 +11,7 @@ let initialState = {
         { id: 5, message: "Седьмой день (22.12.21) поключил Redux", likesCount: 5 },
     ],
     newPostText: '',
+    profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -18,6 +20,11 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText:  action.newText,
+            }
+        case SET_PROFILE_USER:
+            return {
+                ...state,
+                profile: action.profile,
             }
         case ADD_POST:
             let newPost = {
@@ -38,5 +45,6 @@ const profileReducer = (state = initialState, action) => {
 
 export const changeTextActionCreator = (text) => ({ type: CHANGE_TEXT_AREA, newText: text });
 export const addPostActionCreator = () => ({ type: ADD_POST });
+export const setUserProfile = (profile) => ({type:SET_PROFILE_USER, profile:profile });
 
 export default profileReducer;
