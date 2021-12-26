@@ -17,7 +17,6 @@ function App(props) {
                 <Nav />
                 <main className="main" >
                     <Routes >
-                        {/* <Route path="/" element={< Profile state={props.state.profilePage}/>} /> */}
                         <Route path="/dialogs/*" element={< DialogsContainer />} />
                         <Route path="/profile/*" element={< ProfileContainer />} />
                         <Route path="/users" element={< UsersContainer />} />
