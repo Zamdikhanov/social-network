@@ -1,4 +1,5 @@
 import React from 'react';
+import * as axios from 'axios';
 import styles from './Users.module.css';
 import userPhoto from '../../assets/images/unload-avatar.webp';
 import { NavLink } from 'react-router-dom';
@@ -37,7 +38,33 @@ const Users = (props) => {
                         <div className={styles.data}>
                             {user.status}
                         </div>
-                        <button className={styles.button} onClick={() => { props.onClickFollow(user.id) }}> {(user.isfollowed) ? 'Отписаться' : 'Подписаться'}</button>
+                        <button className={styles.button} onClick={() => {
+                            // axios.get(`https://social-network.samuraijs.com/api/1.0/follow/{user.id}`, { withCredentials: true })
+                            //     .then(response => {
+                            //         debugger;
+                            //         if (response.data.resultCode === 0) {
+                            //             let { id, login, email } = response.data.data;
+                            //             this.props.setUserAuthData(id, email, login);
+                            //         }
+                            //     });
+                            if (user.isfollowed) {
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/{user.id}`, { withCredentials: true , headers: {"API-KEY": "930725c8-6bcc-4d61-896c-4731d5e57ed3"}})
+                                    .then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.onClickFollow(user.id);
+                                        }
+                                    })
+                            } else {
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/{user.id}`, {}, { withCredentials: true , headers: {"API-KEY": "930725c8-6bcc-4d61-896c-4731d5e57ed3"}})
+                                    .then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.onClickFollow(user.id);
+                                        };
+                                    })
+                            }
+                        }}>
+                            {(user.isfollowed) ? 'Отписаться' : 'Подписаться'}
+                        </button>
                         <NavLink to={'/profile/' + user.id} className={styles.link}>
                             <button className={styles.button}>Перейти в профиль</button>
                         </NavLink>
