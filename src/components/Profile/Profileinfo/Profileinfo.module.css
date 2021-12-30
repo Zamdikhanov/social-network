@@ -13,6 +13,11 @@
 
 .profile_info__content {
     padding: 0 30px;
+    width: 100%;
+    background-image: url('../../../assets/images/profile-bg.webp');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
 }
 
 .profile_info__title {

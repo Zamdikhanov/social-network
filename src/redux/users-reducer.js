@@ -6,9 +6,9 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     users: [
-        { id: 1, isfollowed: false, name: 'Lenin', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Лежу', location: { city: 'Ulyanovsk', country: 'Russia' } },
-        { id: 2, isfollowed: true, name: 'Lilya', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'I am the best', location: { city: 'Ulyanovsk', country: 'Russia' } },
-        { id: 3, isfollowed: false, name: 'Bulat', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Hi all', location: { city: 'Ulyanovsk', country: 'Russia' } },
+        { id: 1, followed: false, name: 'Lenin', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Лежу', location: { city: 'Ulyanovsk', country: 'Russia' } },
+        { id: 2, followed: true, name: 'Lilya', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'I am the best', location: { city: 'Ulyanovsk', country: 'Russia' } },
+        { id: 3, followed: false, name: 'Bulat', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Hi all', location: { city: 'Ulyanovsk', country: 'Russia' } },
     ],
     pageSize: 12,
     totalUsersCount: 0,
@@ -23,7 +23,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId)
-                        return {...user, isfollowed: !user.isfollowed };
+                        return {...user, followed: !user.followed };
                     else return user
                 }),
             };

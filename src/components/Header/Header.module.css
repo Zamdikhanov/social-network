@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 .header {
+    --main-dark-color: rgba(18, 115, 135, 1);
+    --main-05dark-color: rgba(18, 115, 135, 0.5);
+    --main-light-color: rgba(182, 225, 237, 1);
+    --main-05light-color: rgba(182, 225, 237, 0.5);
+    --accent-color: rgb(167, 152, 139);
+    user-select: none;
     width: 100%;
-    height: 100px;
+    height: 150px;
     background: rgb(253, 253, 254);
     background: radial-gradient(circle, var(--main-light-color) 0%, rgba(182, 225, 237, 1) 45%, var(--main-dark-color) 100%);
     margin: 0 0 10px;
@@ -10,24 +17,82 @@
     justify-content: center;
     transition: background 1s ease-in-out;
     position: relative;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header::before {
+    content: 'ZAMDIKHANOV';
+    display: block;
+    position: absolute;
+    margin: 0;
+    font-size: 250px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.14);
+    animation: move 60s infinite linear alternate;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all ease-in-out 1s;
+}
+
+@keyframes move {
+    0% {
+        top: 50%;
+        transform: translateX(-30%) translateY(-50%);
+    }
+    100% {
+        top: 50%;
+        transform: translateX(-70%) translateY(-50%);
+    }
+}
+
+.header:hover::before {
+    font-size: 150px;
+}
+
+.header_text {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    color: var(--main-light-color);
+    font-size: 24px;
+    text-align: center;
+    width: 200px;
+    margin-left: 20px;
+    border-radius: 5px;
+    transform: translateY(-50%);
+}
+
+.hint_img {
+    display: block;
+    height: 100%;
+    position: absolute;
+    transform: translateY(150%);
+    transition: all ease-in-out 1s;
+}
+
+.header:hover .hint_img {
+    transform: translateY(0%);
 }
 
 .header h2 {
+    z-index: 1;
     font-family: 'Codystar', cursive;
-    font-size: 64px;
-    color: var(--main-dark-color);
+    font-size: 100px;
+    color: var(--main-05dark-color);
     text-shadow: 0 0 10px rgba(69, 122, 133, 0.5);
     display: block;
     letter-spacing: 2px;
-    transition: all 1s ease-in-out;
-}
-
-.header:hover {
-    background: radial-gradient(circle, var(--main-light-color) 0%, rgba(182, 225, 237, 1) 55%, var(--main-dark-color) 100%);
+    transition: all 0.7s ease-in-out;
 }
 
 .header:hover h2 {
-    letter-spacing: 6px;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(69, 122, 133, 0.0);
 }
 
 .login_block {
@@ -40,4 +105,13 @@
     border: 2px solid var(--main-light-color);
     border-radius: 5px;
     transform: translateY(-50%);
+}
+
+.login_block:hover {
+    border: 2px solid var(--main-dark-color);
+}
+
+.login_block__link {
+    color: var(--main-light-color);
+    text-decoration: none;
 }

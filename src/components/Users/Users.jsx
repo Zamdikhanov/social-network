@@ -47,23 +47,25 @@ const Users = (props) => {
                             //             this.props.setUserAuthData(id, email, login);
                             //         }
                             //     });
-                            if (user.isfollowed) {
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/{user.id}`, { withCredentials: true , headers: {"API-KEY": "930725c8-6bcc-4d61-896c-4731d5e57ed3"}})
+                            debugger;
+                            if (user.followed) {
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, { withCredentials: true , headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
                                     .then(response => {
-                                        if (response.data.resultCode === 0) {
+                                        if (response.data.resultCode == 0) {
                                             props.onClickFollow(user.id);
                                         }
                                     })
                             } else {
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/{user.id}`, {}, { withCredentials: true , headers: {"API-KEY": "930725c8-6bcc-4d61-896c-4731d5e57ed3"}})
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, { withCredentials: true , headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
                                     .then(response => {
-                                        if (response.data.resultCode === 0) {
+                                        if (response.data.resultCode == 0) {
                                             props.onClickFollow(user.id);
+                                            console.log(response.data.resultCode);
                                         };
                                     })
                             }
                         }}>
-                            {(user.isfollowed) ? 'Отписаться' : 'Подписаться'}
+                            {(user.followed) ? 'Отписаться' : 'Подписаться'}
                         </button>
                         <NavLink to={'/profile/' + user.id} className={styles.link}>
                             <button className={styles.button}>Перейти в профиль</button>
