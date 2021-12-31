@@ -17,9 +17,10 @@ function App(props) {
                 <Nav />
                 <main className="main" >
                     <Routes >
-                        <Route path="/dialogs/*" element={< DialogsContainer />} />
-                        <Route path="/profile/*" element={< ProfileContainer />} />
-                        <Route path="/users" element={< UsersContainer />} />
+                        <Route path="social-network/*" element={< ProfileContainer />} />
+                        <Route path="social-network/dialogs/*" element={< DialogsContainer />} />
+                        <Route path="social-network/profile/*" element={< ProfileContainer />} />
+                        <Route path="social-network/users" element={< UsersContainer />} />
                     </Routes >
                 </main>
             </div >

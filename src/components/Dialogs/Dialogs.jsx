@@ -1,7 +1,4 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { addDialogPostActionCreator, changeDialogTextActionCreator } from '../../redux/dialog-reducer';
-import styles from './Dialogs.module.css';
+import React from 'react';import styles from './Dialogs.module.css';
 import Message from './Message/Message';
 import UserData from './UserData/UserData';
 

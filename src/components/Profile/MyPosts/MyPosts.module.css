@@ -1,6 +1,6 @@
 .myPosts {
     width: 100%;
-    background: rgb(162, 162, 247);
+    background: radial-gradient(circle, var(--main-light-color) 0%, rgba(182, 225, 237, 1) 45%, var(--main-dark-color) 100%);
     border: 2px solid var(--main-dark-color);
 }
 

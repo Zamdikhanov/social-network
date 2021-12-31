@@ -1,30 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import { setCurrentPages, setTotalCount, setUsers, toggleFollow, toggleIsFetching } from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../Common/Preloader/Preloader';
+import { usersAPI } from '../../api/api';
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true, headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotalCount(response.data.totalCount);
-            });
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false);
+            this.props.setUsers(data.items);
+            this.props.setTotalCount(data.totalCount);
+        });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPages(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber + 1}&count=${this.props.pageSize}`, {withCredentials: true, headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items);
-            });
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false);
+            this.props.setUsers(data.items);
+        });
+    }
+
+    onClickFollow = (user) => {
+        if (user.followed) {
+            usersAPI.deleteFollow(user.id).then(data => {
+                if (data.resultCode == 0) {
+                    this.props.toggleFollow(user.id);
+                }
+            })
+        } else {
+            usersAPI.postFollow(user.id).then(data => {
+                if (data.resultCode == 0) {
+                    this.props.toggleFollow(user.id);
+                };
+            })
+        }
     }
 
     render() {
@@ -37,7 +51,7 @@ class UsersContainer extends React.Component {
                     currentPage={this.props.currentPage}
                     onPageChanged={this.onPageChanged}
                     users={this.props.users}
-                    onClickFollow={this.props.onClickFollow}
+                    onClickFollow={this.onClickFollow}
                 />
             </>)
     }
@@ -53,7 +67,7 @@ let mapStateToProps = (state) => ({
 
 
 export default connect(mapStateToProps, {
-    onClickFollow: toggleFollow,
+    toggleFollow: toggleFollow,
     setUsers,
     setTotalCount,
     setCurrentPages,
