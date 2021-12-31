@@ -3,7 +3,7 @@ import * as axios from 'axios';
 import styles from './Users.module.css';
 import userPhoto from '../../assets/images/unload-avatar.webp';
 import { NavLink } from 'react-router-dom';
-// import Preloader from '../Common/Preloader/Preloader';
+import Preloader from '../Common/Preloader/Preloader';
 
 
 const Users = (props) => {
@@ -18,7 +18,7 @@ const Users = (props) => {
         <div className={styles.main}>
             <div className={styles.pageNumbers}>
                 {pagesCount} страниц
-                {/* <Preloader isFetching={props.isFetching} /> */}
+                <Preloader isFetching={props.isFetching} />
                 {pages.map(p => {
                     return (
                         <span className={props.currentPage === p ? styles.selectedPage : styles.unSelectedPage} onClick={() => { props.onPageChanged(p) }}>{p}</span>);
@@ -39,15 +39,6 @@ const Users = (props) => {
                             {user.status}
                         </div>
                         <button className={styles.button} onClick={() => {
-                            // axios.get(`https://social-network.samuraijs.com/api/1.0/follow/{user.id}`, { withCredentials: true })
-                            //     .then(response => {
-                            //         debugger;
-                            //         if (response.data.resultCode === 0) {
-                            //             let { id, login, email } = response.data.data;
-                            //             this.props.setUserAuthData(id, email, login);
-                            //         }
-                            //     });
-                            debugger;
                             if (user.followed) {
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, { withCredentials: true , headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
                                     .then(response => {

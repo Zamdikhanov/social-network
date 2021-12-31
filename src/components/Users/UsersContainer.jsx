@@ -9,7 +9,7 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true})
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true, headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -20,7 +20,7 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPages(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber + 1}&count=${this.props.pageSize}`, {withCredentials: true})
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber + 1}&count=${this.props.pageSize}`, {withCredentials: true, headers: {"API-KEY": "3ffc89b3-6eae-4f6c-8d58-93af5a15243e"}})
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items);
@@ -51,13 +51,6 @@ let mapStateToProps = (state) => ({
     isFetching: state.usersPage.isFetching,
 });
 
-// let mapDispatchToProps = (dispatch) => ({
-//     onClickFollow: (userId) => dispatch(toggleFollowAC(userId)),
-//     setUsers: (users) => dispatch(setUsersAC(users)),
-//     setTotalCount: (count) => dispatch(setTotalCountAC(count)),
-//     setCurrentPages: (page) => dispatch(setCurrentPagesAC(page)),
-//     toggleIsFetching: (isFetching) => dispatch(toggleIsFetchingAC(isFetching)),
-// })
 
 export default connect(mapStateToProps, {
     onClickFollow: toggleFollow,
