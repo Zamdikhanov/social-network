@@ -1,23 +1,18 @@
 # Проект по курсу: Путь самурая
 
-В пути ...
-Освоение React, Redux
+### Демонстрация моего незаконченного сайта доступна по ссылке [Путь самурая](https://zamdikhanov.github.io/social-network/)
+
+В пути ... \
+Цель: освоение React, Redux и чуток развлечени в верстке \
+Автор курса: [IT-KAMASUTRA](https://www.youtube.com/channel/UCTW0FUhT0m-Bqg2trTbSs0g) \
+
+
+### О проекте
+
+Курс в проессе прохождения...  \
+Декабрь 2021 - ...  \
+Прошел 63 урок из 100 \
+По качеству моего проекта нельзя судить о качестве всего курса. Как по мне, курс великолепен, хотя некоторые вещи в REACT уже изменились с 2018-2019 гг. Если вам по быстрому, то наверно этот курс не для вас. Автор курса делает акцент на то, как устроено все по капотом, и не акцентирует внимание на внешнем виде. Если вам нужны рюшечки, делаем сами. Я не много набросал дизайн в меру своего опыта и вкуса. \
+Адаптив обавлю в конце, т.к. не знаю куа заведет мен автор курса.
+
 Автор проекта: [Zamdikhanov](https://github.com/Zamdikhanov)
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
