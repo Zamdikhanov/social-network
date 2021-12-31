@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "c0206630e30ab457eed7",
-    "url": "/social-network/static/css/main.1aed5b44.chunk.css"
+    "revision": "db829b4a076a8d300db0",
+    "url": "/social-network/static/css/main.ee83dcd0.chunk.css"
   },
   {
-    "revision": "c0206630e30ab457eed7",
-    "url": "/social-network/static/js/main.c0206630.chunk.js"
+    "revision": "db829b4a076a8d300db0",
+    "url": "/social-network/static/js/main.db829b4a.chunk.js"
   },
   {
-    "revision": "2333c446ab57fd4ded78",
-    "url": "/social-network/static/js/1.2333c446.chunk.js"
+    "revision": "05f9178cab5b6f59ff9b",
+    "url": "/social-network/static/js/1.05f9178c.chunk.js"
   },
   {
     "revision": "22e660ce69f7e2ad833f",
@@ -24,15 +24,15 @@ self.__precacheManifest = [
     "url": "/social-network/static/media/unload-avatar.482a2308.webp"
   },
   {
-    "revision": "04505faa9ae99916ff085e11cfd142ee",
-    "url": "/social-network/static/media/preloader.04505faa.svg"
+    "revision": "9547f84789ca52f50de1296aecbe89a0",
+    "url": "/social-network/static/media/preloader.9547f847.svg"
   },
   {
     "revision": "85e5d1fb6732aacf1ec3a3ef71792da8",
     "url": "/social-network/static/media/lenin-way.85e5d1fb.png"
   },
   {
-    "revision": "b71c0ff1e4d4c49f16b46c035efb2571",
+    "revision": "46cced62fac49223d587a7c127fd3fa7",
     "url": "/social-network/index.html"
   }
 ];
