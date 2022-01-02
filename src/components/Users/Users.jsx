@@ -8,22 +8,31 @@ import Preloader from '../Common/Preloader/Preloader';
 const Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i < 21; i++) {
-        pages.push(i);
-    }
+
+    let newPage = React.createRef();
 
     return (
         <div className={styles.main}>
             <div className={styles.pageNumbers}>
-                {pagesCount} страниц
+                <button className={styles.switchingPageButton} onClick={() => { props.onPageChanged(props.currentPage - 1) }}>
+                    Предыдущая
+                </button>
+                <div> стр. {props.currentPage} из {pagesCount} </div>
+                <button className={styles.switchingPageButton} onClick={() => { props.onPageChanged(props.currentPage + 1) }}>
+                    Следующая
+                </button>
                 <Preloader isFetching={props.isFetching} />
-                {pages.map( (p, i) => {
-                    return (
-                        <span key={i} className={props.currentPage === p ? styles.selectedPage : styles.unSelectedPage} onClick={() => { props.onPageChanged(p) }}>{p}</span>);
-                })}
             </div>
-            {props.users.map(user =>(
+            <div className={styles.pageNumbers}>
+                <input className={styles.pageNumberInput} type='number' min='1' ref={newPage} placeholder={props.currentPage} />
+                <button className={styles.switchingPageButton} onClick={() => {
+                    props.onPageChanged(Math.round(newPage.current.value));
+                    newPage.current.value='';
+                    }}>
+                    Перейти
+                </button>
+            </div>
+            {props.users.map(user => (
                 <div key={user.id} className={styles.userCard} style={{ 'backgroundImage': user.photos.large != null ? ("url(" + user.photos.large + ")") : ("url(" + userPhoto + ")") }}>
                     <div className={styles.gradient}>
                     </div>
@@ -37,7 +46,7 @@ const Users = (props) => {
                         <div className={styles.data}>
                             {user.status}
                         </div>
-                        <button disabled={props.followingInProgress} className={styles.button} onClick={() => props.onClickFollow(user)}>
+                        <button disabled={props.followingInProgress.some(id => id == user.id)} className={styles.button} onClick={() => props.onClickFollow(user)}>
                             {(user.followed) ? 'Отписаться' : 'Подписаться'}
                         </button>
                         <NavLink to={'/social-network/profile/' + user.id} className={styles.link}>

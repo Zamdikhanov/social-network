@@ -26,24 +26,22 @@ class UsersContainer extends React.Component {
     }
 
     onClickFollow = (user) => {
-        this.props.toggleFollowingInProgress(true);
-        console.log(this.props.followingInProgress);
+        this.props.toggleFollowingInProgress(true, user.id);
         if (user.followed) {
             usersAPI.deleteFollow(user.id).then(data => {
                 if (data.resultCode == 0) {
                     this.props.toggleFollow(user.id);
                 }
-                this.props.toggleFollowingInProgress(false);
+                this.props.toggleFollowingInProgress(false, user.id);
             })
         } else {
             usersAPI.postFollow(user.id).then(data => {
                 if (data.resultCode == 0) {
                     this.props.toggleFollow(user.id);
                 };
-                this.props.toggleFollowingInProgress(false);
+                this.props.toggleFollowingInProgress(false, user.id);
             })
         }
-        console.log(this.props.followingInProgress);
     }
 
     render() {

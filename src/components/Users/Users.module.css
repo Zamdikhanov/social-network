@@ -10,9 +10,44 @@
     padding: 1em;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
-.selectedPage {
+.switchingPageButton {
+    display: block;
+    margin: 0 1em;
+    padding: 0.5em;
+    color: #000;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid var(--main-light-color);
+    background-color: var(--main-05light-color);
+    font-weight: 700px;
+}
+
+.switchingPageButton:hover {
+    border: 1px solid var(--main-dark-color);
+    box-shadow: 0px 0px 10px 3px var(--main-05light-color);
+}
+
+.pageNumberInput {
+    padding: 0.5em;
+    color: #000;
+    border-radius: 3px;
+    border: 1px solid var(--main-dark-color);
+    background-color: #fff;
+    width: 7em;
+    user-select: auto;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* .selectedPage {
     font-weight: 700;
     font-size: 1.2em;
     margin: 0 5px;
@@ -22,7 +57,7 @@
 .unSelectedPage {
     margin: 0 5px;
     cursor: pointer;
-}
+} */
 
 .userCard {
     width: calc( (100% - 4*2*5px)/4);
@@ -114,11 +149,11 @@
 .button:disabled {
     color: var(--main-05light-color);
     cursor: not-allowed;
-    background-color: rgba(216, 66, 66, 1);
+    background-color: rgba(200, 50, 50, 0.2);
 }
 
 .button:disabled:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(200, 50, 50, 0.2);
 }
 
 .link {
