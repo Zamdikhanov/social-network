@@ -9,7 +9,7 @@ const Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 1; i < 21; i++) {
         pages.push(i);
     }
 
@@ -23,7 +23,7 @@ const Users = (props) => {
                         <span key={i} className={props.currentPage === p ? styles.selectedPage : styles.unSelectedPage} onClick={() => { props.onPageChanged(p) }}>{p}</span>);
                 })}
             </div>
-            {props.users.map(user => (
+            {props.users.map(user =>(
                 <div key={user.id} className={styles.userCard} style={{ 'backgroundImage': user.photos.large != null ? ("url(" + user.photos.large + ")") : ("url(" + userPhoto + ")") }}>
                     <div className={styles.gradient}>
                     </div>
@@ -37,7 +37,7 @@ const Users = (props) => {
                         <div className={styles.data}>
                             {user.status}
                         </div>
-                        <button className={styles.button} onClick={() => props.onClickFollow(user)}>
+                        <button disabled={props.followingInProgress} className={styles.button} onClick={() => props.onClickFollow(user)}>
                             {(user.followed) ? 'Отписаться' : 'Подписаться'}
                         </button>
                         <NavLink to={'/social-network/profile/' + user.id} className={styles.link}>
