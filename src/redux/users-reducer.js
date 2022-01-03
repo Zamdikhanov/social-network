@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const TOGGLE_FOLLOW = 'TOGGLE_FOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
@@ -7,7 +9,7 @@ const TOGGLE_FOLOWING_IN_PROGRESS = 'TOGGLE_FOLOWING_IN_PROGRESS';
 
 let initialState = {
     users: [
-        { id: 1, followed: false, name: 'Lenin', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Лежу', location: { city: 'Ulyanovsk', country: 'Russia' } },
+        { id: 1, followed: false, name: 'Lenin', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg', large: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Лежу', location: { city: 'Ulyanovsk', country: 'Russia' } },
         { id: 2, followed: true, name: 'Lilya', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'I am the best', location: { city: 'Ulyanovsk', country: 'Russia' } },
         { id: 3, followed: false, name: 'Bulat', photos: { small: 'https://content.tviz.tv/gfx/res/44466/azb4n7wrxnkg0w4gwsk0w0o4o.jpg' }, status: 'Hi all', location: { city: 'Ulyanovsk', country: 'Russia' } },
     ],
@@ -61,11 +63,44 @@ const usersReducer = (state = initialState, action) => {
 }
 
 
-export const toggleFollow = (userId) => ({ type: TOGGLE_FOLLOW, userId: userId });
+export const toggleStateFollow = (userId) => ({ type: TOGGLE_FOLLOW, userId: userId });
 export const setUsers = (users) => ({ type: SET_USERS, users: users });
 export const setTotalCount = (count) => ({ type: SET_TOTAL_COUNT, count: count });
 export const setCurrentPages = (page) => ({ type: SET_CURRENT_PAGE, page: page });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching: isFetching });
 export const toggleFollowingInProgress = (isFetching, id) => ({ type: TOGGLE_FOLOWING_IN_PROGRESS, isFetching: isFetching, id: id });
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setCurrentPages(currentPage));
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalCount(data.totalCount));
+        });
+    }
+}
+
+export const toggleFollow = (user) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingInProgress(true, user.id));
+        if (user.followed) {
+            usersAPI.deleteFollow(user.id).then(data => {
+                if (data.resultCode == 0) {
+                    dispatch(toggleStateFollow(user.id));
+                }
+                dispatch(toggleFollowingInProgress(false, user.id));
+            })
+        } else {
+            usersAPI.postFollow(user.id).then(data => {
+                if (data.resultCode == 0) {
+                    dispatch(toggleStateFollow(user.id));
+                };
+                dispatch(toggleFollowingInProgress(false, user.id));
+            })
+        }
+    }
+}
 
 export default usersReducer;

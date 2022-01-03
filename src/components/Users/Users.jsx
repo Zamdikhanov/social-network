@@ -13,24 +13,26 @@ const Users = (props) => {
 
     return (
         <div className={styles.main}>
-            <div className={styles.pageNumbers}>
-                <button className={styles.switchingPageButton} onClick={() => { props.onPageChanged(props.currentPage - 1) }}>
-                    Предыдущая
-                </button>
-                <div> стр. {props.currentPage} из {pagesCount} </div>
-                <button className={styles.switchingPageButton} onClick={() => { props.onPageChanged(props.currentPage + 1) }}>
-                    Следующая
-                </button>
-                <Preloader isFetching={props.isFetching} />
-            </div>
-            <div className={styles.pageNumbers}>
-                <input className={styles.pageNumberInput} type='number' min='1' ref={newPage} placeholder={props.currentPage} />
-                <button className={styles.switchingPageButton} onClick={() => {
-                    props.onPageChanged(Math.round(newPage.current.value));
-                    newPage.current.value='';
+            <div className={styles.pageNumbersWrap}>
+                <div className={styles.pageNumbers}>
+                    <button className={styles.switchingPageButton + ' ' + styles.leftNarrow} onClick={() => { props.onPageChanged(props.currentPage - 1) }}>
+                        Предыдущая
+                    </button>
+                    <div className={styles.pageNumber_text}> стр. {props.currentPage} из {pagesCount} </div>
+                    <button className={styles.switchingPageButton + ' ' + styles.rightNarrow} onClick={() => { props.onPageChanged(props.currentPage + 1) }}>
+                        Следующая
+                    </button>
+                    <Preloader isFetching={props.isFetching} />
+                </div>
+                <div className={styles.pageNumbers}>
+                    <input className={styles.pageNumberInput} type='number' min='1' ref={newPage} placeholder={props.currentPage} />
+                    <button className={styles.switchingPageButton + ' ' + styles.submit} onClick={() => {
+                        props.onPageChanged(Math.round(newPage.current.value));
+                        newPage.current.value = '';
                     }}>
-                    Перейти
-                </button>
+                        Перейти
+                    </button>
+                </div>
             </div>
             {props.users.map(user => (
                 <div key={user.id} className={styles.userCard} style={{ 'backgroundImage': user.photos.large != null ? ("url(" + user.photos.large + ")") : ("url(" + userPhoto + ")") }}>

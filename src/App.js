@@ -21,6 +21,7 @@ function App(props) {
                         <Route path="social-network/dialogs/*" element={< DialogsContainer />} />
                         <Route path="social-network/profile/*" element={< ProfileContainer />} />
                         <Route path="social-network/users" element={< UsersContainer />} />
+                        <Route path="social-network/content" element={< div />} />
                     </Routes >
                 </main>
             </div >

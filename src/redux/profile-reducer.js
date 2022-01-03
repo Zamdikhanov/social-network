@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
 const ADD_POST = 'ADD-POST';
 const SET_PROFILE_USER = 'SET_PROFILE_USER';
@@ -20,7 +22,7 @@ const profileReducer = (state = initialState, action) => {
         case CHANGE_TEXT_AREA:
             return {
                 ...state,
-                newPostText:  action.newText,
+                newPostText: action.newText,
             }
         case SET_PROFILE_USER:
             return {
@@ -46,6 +48,15 @@ const profileReducer = (state = initialState, action) => {
 
 export const changeTextActionCreator = (text) => ({ type: CHANGE_TEXT_AREA, newText: text });
 export const addPostActionCreator = () => ({ type: ADD_POST });
-export const setUserProfile = (profile) => ({type:SET_PROFILE_USER, profile:profile });
+export const setUserProfile = (profile) => ({ type: SET_PROFILE_USER, profile: profile });
+
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        usersAPI.getProfile(userId)
+            .then(responce => {
+                dispatch(setUserProfile(responce.data));
+            });
+    };
+}
 
 export default profileReducer;

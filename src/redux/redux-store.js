@@ -1,9 +1,10 @@
-import { combineReducers, createStore } from "redux";
-import authReducer from "./auth-reducer";
-import dialogReducer from "./dialog-reducer";
-import profileReducer from "./profile-reducer";
-import sidebarReducer from "./sidebar-reducer";
-import usersReducer from "./users-reducer";
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import authReducer from './auth-reducer';
+import dialogReducer from './dialog-reducer';
+import profileReducer from './profile-reducer';
+import sidebarReducer from './sidebar-reducer';
+import usersReducer from './users-reducer';
+import thunkMiddleWare from 'redux-thunk'
 
 let redusersAll = combineReducers({
     profilePage: profileReducer,
@@ -13,7 +14,7 @@ let redusersAll = combineReducers({
     auth: authReducer,
 });
 
-let store = createStore(redusersAll);
+let store = createStore(redusersAll, applyMiddleware(thunkMiddleWare));
 
 window.store = store;
 
