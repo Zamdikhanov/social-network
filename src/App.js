@@ -7,6 +7,7 @@ import Nav from './components/Nav/Nav';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 
 
 function App(props) {
@@ -22,6 +23,7 @@ function App(props) {
                         <Route path="social-network/profile/*" element={< ProfileContainer />} />
                         <Route path="social-network/users" element={< UsersContainer />} />
                         <Route path="social-network/content" element={< div />} />
+                        <Route path="social-network/login" element={< Login />} />
                     </Routes >
                 </main>
             </div >

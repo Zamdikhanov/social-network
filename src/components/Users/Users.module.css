@@ -24,51 +24,56 @@
     display: block;
     padding: 0.3em 0;
     color: #fff;
-    border: none;
+    /* border: none; */
     border: 2px solid var(--main-dark-color);
     background-color: var(--main-dark-color);
     width: 9em;
-    font-weight: 700px;
+    font-weight: 700;
     cursor: pointer;
     position: relative;
     transition: all ease-in-out 0.2s;
 }
 
 .switchingPageButton:hover {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
 .leftNarrow:before {
     content: '';
     position: absolute;
     padding: 0px;
-    left: -3em;
+    left: -2.4em;
     top: 50%;
     transform: translateY(-50%);
     display: block;
-    width: 3em;
-    height: 3.2em;
-    border: 1.6em solid #fff;
-    border-right: 1.4em solid var(--main-dark-color);
+    width: 2.4em;
+    height: 2.8em;
+    border: 1.4em solid #fff;
+    border-right: 1em solid var(--main-dark-color);
 }
 
 .rightNarrow:before {
     content: '';
     position: absolute;
     padding: 0px;
-    right: -3em;
+    right: -2.4em;
     top: 50%;
     transform: translateY(-50%);
     display: block;
-    width: 3em;
-    height: 3.2em;
-    border: 1.6em solid #fff;
-    border-left: 1.4em solid var(--main-dark-color);
+    width: 2.4em;
+    height: 2.8em;
+    border: 1.4em solid #fff;
+    border-left: 1em solid var(--main-dark-color);
 }
 
 .pageNumber_text {
     padding: 0.3em 0.5em;
     border: 2px solid var(--main-dark-color);
+}
+
+.pageNumber_text span {
+    font-weight: 700;
+    color: var(--main-dark-color);
 }
 
 .pageNumberInput {

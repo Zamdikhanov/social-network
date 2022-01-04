@@ -1,4 +1,5 @@
-import React from 'react';import styles from './Dialogs.module.css';
+import React from 'react';
+import styles from './Dialogs.module.css';
 import Message from './Message/Message';
 import UserData from './UserData/UserData';
 
@@ -18,6 +19,7 @@ const Dialogs = (props) => {
 
     let userDataElements = props.usersData.map(user => <UserData key={user.id} id={user.id} name={user.name} />);
     let messageElements = props.usersPost.map(post => <Message message={post.message} likesCount={post.likesCount} />);
+
 
     return (
         <div className={styles.dialogs}>

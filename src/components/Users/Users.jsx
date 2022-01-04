@@ -18,7 +18,7 @@ const Users = (props) => {
                     <button className={styles.switchingPageButton + ' ' + styles.leftNarrow} onClick={() => { props.onPageChanged(props.currentPage - 1) }}>
                         Предыдущая
                     </button>
-                    <div className={styles.pageNumber_text}> стр. {props.currentPage} из {pagesCount} </div>
+                    <div className={styles.pageNumber_text}> стр. <span>{props.currentPage}</span> из {pagesCount} </div>
                     <button className={styles.switchingPageButton + ' ' + styles.rightNarrow} onClick={() => { props.onPageChanged(props.currentPage + 1) }}>
                         Следующая
                     </button>
