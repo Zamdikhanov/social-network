@@ -1,0 +1,34 @@
+.profile_status {
+    padding-bottom: 0.2em;
+    /* border-bottom: 1px solid rgba(76, 81, 85, 0.5); */
+}
+
+.profile_status__text {
+    margin-right: 0.5em;
+    color: rgb(76, 81, 85);
+    font-weight: 700;
+}
+
+.profile_status__text span {
+    margin-right: 0.5em;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.profile_status__button {
+    display: inline-block;
+}
+
+.profile_status__input {
+    margin-right: 0.5em;
+    color: rgb(76, 81, 85);
+    font-weight: 700;
+}
+
+.profile_status__input input {
+    margin-right: 0.5em;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    width: 100%;
+}

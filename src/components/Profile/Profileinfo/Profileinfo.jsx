@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Profileinfo.module.css';
 import Preloader from './../../Common/Preloader/Preloader';
 import userPhoto from '../../../assets/images/unload-avatar.webp';
+import Profilestatus from './Profilestatus';
 
 
 const Profileinfo = (props) => {
@@ -38,6 +39,7 @@ const Profileinfo = (props) => {
         <div className={styles.profile_info__title}>
           {props.profile.fullName}
         </div>
+        <Profilestatus status={'Хочу сменить профессию'} />
         <div className={styles.profile_info__about}>
           <span>Обо мне:</span> {props.profile.aboutMe} <br />
           <span>Описание:</span>{props.profile.lookingForAJobDescription}
