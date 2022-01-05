@@ -3,18 +3,24 @@ import styles from './Profilestatus.module.css';
 
 
 class Profilestatus extends React.Component {
+  statusInputRef = React.createRef;
+
   state = {
     editMode: false,
+    status: this.props.status,
   }
 
   toggleEditMode = () => {
-    // this.state.editMode = !this.state.editMode;
-    // this.forceUpdate();
     if (this.state.editMode) {
-      this.setState({ editMode: false })
+      this.setState({ editMode: false });
+      this.props.updateUserStatus(this.state.status);
     } else {
       this.setState({ editMode: true })
     }
+  }
+
+  onStatusChange = (e) => {
+    this.setState({ status: e.currentTarget.value});
   }
 
   render() {
@@ -22,14 +28,20 @@ class Profilestatus extends React.Component {
       <div className={styles.profile_status}>
         {!this.state.editMode
           ? (
-            <div className={styles.profile_status__text}>
-              Статус: <span>{this.props.status}</span>
+            <div className={styles.profile_status__inner}>
+              <div className={styles.profile_status__text}>
+                Статус:
+              </div>
+              <span>{this.props.status || '*****'}</span>
               <button className={styles.profile_status__button} onClick={this.toggleEditMode} >изм.</button>
             </div>
           )
           : (
-            <div className={styles.profile_status__input}>
-              Статус: <input value={this.props.status} onBlur={this.toggleEditMode} autoFocus={true}/>
+            <div className={styles.profile_status__inner}>
+              <div className={styles.profile_status__text}>
+                Статус:
+              </div>
+              <input onChange={this.onStatusChange} value={this.state.status} onBlur={this.toggleEditMode} autoFocus={true} />
             </div>
           )
         }

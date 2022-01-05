@@ -39,10 +39,11 @@ const Profileinfo = (props) => {
         <div className={styles.profile_info__title}>
           {props.profile.fullName}
         </div>
-        <Profilestatus status={'Хочу сменить профессию'} />
+        <Profilestatus status={props.status} updateUserStatus={props.updateUserStatus}/>
         <div className={styles.profile_info__about}>
           <span>Обо мне:</span> {props.profile.aboutMe} <br />
-          <span>Описание:</span>{props.profile.lookingForAJobDescription}
+          <span>В поисках работы:</span> {props.profile.lookingForAJob ? ' Да' : ' Нет'} <br />
+          <span>Описание работы:</span>{props.profile.lookingForAJobDescription}
         </div>
         <div className={styles.profile_info__contact}>
           <ul> Контакты
