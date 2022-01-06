@@ -3,7 +3,7 @@ import styles from './Profilestatus.module.css';
 
 
 class Profilestatus extends React.Component {
-  statusInputRef = React.createRef;
+  // statusInputRef = React.createRef;
 
   state = {
     editMode: false,
@@ -21,6 +21,12 @@ class Profilestatus extends React.Component {
 
   onStatusChange = (e) => {
     this.setState({ status: e.currentTarget.value});
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevProps.status !== this.state.status) {
+      this.setState({status: this.props.status})
+    }
   }
 
   render() {
