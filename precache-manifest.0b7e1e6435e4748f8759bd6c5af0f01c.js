@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "a193908dd6240cfee2a6",
-    "url": "/social-network/static/css/main.b5ae410c.chunk.css"
+    "revision": "ceac4e08375623f77166",
+    "url": "/social-network/static/css/main.ca5aa544.chunk.css"
   },
   {
-    "revision": "a193908dd6240cfee2a6",
-    "url": "/social-network/static/js/main.a193908d.chunk.js"
+    "revision": "ceac4e08375623f77166",
+    "url": "/social-network/static/js/main.ceac4e08.chunk.js"
   },
   {
-    "revision": "fc506d9868febf8689e8",
-    "url": "/social-network/static/js/1.fc506d98.chunk.js"
+    "revision": "34befb9ffd3df0fe49d2",
+    "url": "/social-network/static/js/1.34befb9f.chunk.js"
   },
   {
     "revision": "22e660ce69f7e2ad833f",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/social-network/static/media/lenin-way.85e5d1fb.png"
   },
   {
-    "revision": "d5d15857b80b2064a264ba5fcc2c054e",
+    "revision": "3dba35f0521359209e2d0cbb6f8f6caf",
     "url": "/social-network/index.html"
   }
 ];
