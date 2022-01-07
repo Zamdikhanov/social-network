@@ -26,7 +26,7 @@ const dialogReducer = (state = initialState, action) => {
         case DIALOG_ADD_POST:
             let dialogNewPost = {
                 id: 5,
-                message: state.newPostText,
+                message: action.text,
                 likesCount: 0,
             };
             return {
@@ -35,11 +35,11 @@ const dialogReducer = (state = initialState, action) => {
                 newPostText: '',
             };
         default:
-            return state;;
+            return state;
     }
 }
 
 export const changeDialogTextActionCreator = (text) => ({ type: DIALOG_CHANGE_TEXT_AREA, newText: text });
-export const addDialogPostActionCreator = () => ({ type: DIALOG_ADD_POST });
+export const addDialogPostActionCreator = (text) => ({ type: DIALOG_ADD_POST, text: text });
 
 export default dialogReducer;

@@ -48,7 +48,7 @@ const Users = (props) => {
                         <div className={styles.data}>
                             {user.status}
                         </div>
-                        <button disabled={props.followingInProgress.some(id => id == user.id)} className={styles.button} onClick={() => props.onClickFollow(user)}>
+                        <button disabled={props.followingInProgress.some(id => id === user.id)} className={styles.button} onClick={() => props.onClickFollow(user)}>
                             {(user.followed) ? 'Отписаться' : 'Подписаться'}
                         </button>
                         <NavLink to={'/social-network/profile/' + user.id} className={styles.link}>

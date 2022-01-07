@@ -1,4 +1,5 @@
 import React from 'react';
+import { Formik, Field, Form, useFormik } from 'formik';
 import styles from './Dialogs.module.css';
 import Message from './Message/Message';
 import UserData from './UserData/UserData';
@@ -6,7 +7,7 @@ import UserData from './UserData/UserData';
 
 const Dialogs = (props) => {
 
-    let text='';
+    let text = '';
 
     let onChangeAreaValue = (event) => {
         text = event.target.value;
@@ -30,13 +31,33 @@ const Dialogs = (props) => {
                 <div>
                     {messageElements}
                 </div>
-                <div>
-                    <textarea className={styles.textarea} value={props.newPostText} placeholder="Введите ваше сообщение" onChange={onChangeAreaValue}></textarea>
-                    <button onClick={onAddPost}>Add Post</button>
-                </div>
+                <AddMessageForm {...props} />
             </div>
         </div>
     )
 };
+
+const AddMessageForm = (props) => {
+    return (
+        <Formik
+            initialValues={{
+                textarea: '',
+            }}
+            onSubmit={async values => {
+                props.onAddPost(values.textarea);
+                values.textarea = '';
+            }}
+        >
+            <Form className={styles.form_box}>
+                <label className={styles.form_box__input}>
+                    <Field className={styles.textarea} as='textarea' id='textarea' name='textarea' placeholder="Введите ваше сообщение" />
+                </label>
+                <button type="submit" disabled={false}>
+                    Добавить сообщение
+                </button>
+            </Form>
+        </Formik>
+    )
+}
 
 export default Dialogs;

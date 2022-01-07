@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
@@ -19,8 +18,8 @@ let mapDispatchToProps = (dispatch) => {
         onChangeAreaValue: (text) => {
             dispatch(changeDialogTextActionCreator(text));
         },
-        onAddPost: () => {
-                dispatch(addDialogPostActionCreator());
+        onAddPost: (text) => {
+                dispatch(addDialogPostActionCreator(text));
         },
     }
 }
