@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
-import { addDialogPostActionCreator, changeDialogTextActionCreator } from '../../redux/dialog-reducer';
+import { addDialogPostActionCreator } from '../../redux/dialog-reducer';
 import Dialogs from './Dialogs';
 
 
@@ -15,9 +15,6 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onChangeAreaValue: (text) => {
-            dispatch(changeDialogTextActionCreator(text));
-        },
         onAddPost: (text) => {
                 dispatch(addDialogPostActionCreator(text));
         },

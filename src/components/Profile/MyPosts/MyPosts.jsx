@@ -1,32 +1,38 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import { Formik, Form, Field } from 'formik';
 
 
 const MyPosts = (props) => {
-
-  let newPostElement = React.createRef();
-
-  let onAreaChange = () => {
-    let text = newPostElement.current.value;
-    props.changeText(text);
-  }
-
-  let onAddPost = () => {
-    props.addPost();
-  }
 
   let posts = props.postsData.map(postsData => <Post postsData={postsData} />).reverse();
 
   return (
     <main className={styles.myPosts}>
-      <div className={styles.addPost}>
-        <h3>My Posts</h3>
-        <textarea className={styles.textarea} ref={newPostElement} value={props.newPostText} placeholder="Введите ваше сообщение" onChange={onAreaChange}></textarea>
-        <button onClick={onAddPost}>Add Post</button>
-      </div>
+      <MyPostsForm {...props} />
       {posts}
     </main>
+  )
+};
+
+const MyPostsForm = (props) => {
+  return (
+    <Formik
+      initialValues={{
+        textarea: '',
+      }}
+      onSubmit={async values => {
+        props.addPost(values.textarea);
+        values.textarea = '';
+      }}
+    >
+      <Form className={styles.addPost}>
+        <h3 className={styles.addPost__title}>Мои сообщения</h3>
+        <Field as='textarea' className={styles.textarea} id='textarea' name='textarea' placeholder="Введите ваше сообщение" />
+        <button className={styles.addPost__button} type="submit" >Добавить сообщение</button>
+      </Form>
+    </Formik >
   )
 };
 

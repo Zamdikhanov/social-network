@@ -1,4 +1,4 @@
-const DIALOG_CHANGE_TEXT_AREA = 'DIALOG-CHANGE-TEXT-AREA';
+
 const DIALOG_ADD_POST = 'DIALOG-ADD-POST';
 
 let initialState = {
@@ -18,11 +18,6 @@ let initialState = {
 
 const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
-        case DIALOG_CHANGE_TEXT_AREA:
-            return {
-                ...state,
-                newPostText: action.newText,
-            };
         case DIALOG_ADD_POST:
             let dialogNewPost = {
                 id: 5,
@@ -39,7 +34,6 @@ const dialogReducer = (state = initialState, action) => {
     }
 }
 
-export const changeDialogTextActionCreator = (text) => ({ type: DIALOG_CHANGE_TEXT_AREA, newText: text });
 export const addDialogPostActionCreator = (text) => ({ type: DIALOG_ADD_POST, text: text });
 
 export default dialogReducer;

@@ -1,6 +1,5 @@
 import { profileAPI, usersAPI } from "../api/api";
 
-const CHANGE_TEXT_AREA = 'CHANGE-TEXT-AREA';
 const ADD_POST = 'ADD-POST';
 const SET_PROFILE_USER = 'SET_PROFILE_USER';
 const SET_STATUS = 'SET_STATUS';
@@ -13,7 +12,6 @@ let initialState = {
         { id: 4, message: "Четвертый день (18.12.21) Курс: Путь самурая", likesCount: 5 },
         { id: 5, message: "Седьмой день (22.12.21) поключил Redux", likesCount: 5 },
     ],
-    newPostText: '',
     profile: null,
     status: '',
     isFetching: false,
@@ -21,11 +19,6 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CHANGE_TEXT_AREA:
-            return {
-                ...state,
-                newPostText: action.newText,
-            }
         case SET_PROFILE_USER:
             return {
                 ...state,
@@ -34,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST:
             let newPost = {
                 id: 6,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0,
             };
             return {
@@ -53,8 +46,7 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export const changeTextActionCreator = (text) => ({ type: CHANGE_TEXT_AREA, newText: text });
-export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addPost = (newPostText) => ({ type: ADD_POST, newPostText: newPostText });
 export const setUserProfile = (profile) => ({ type: SET_PROFILE_USER, profile });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 

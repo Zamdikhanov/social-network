@@ -1,22 +1,11 @@
 import React from 'react';
-import { Formik, Field, Form, useFormik } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import styles from './Dialogs.module.css';
 import Message from './Message/Message';
 import UserData from './UserData/UserData';
 
 
 const Dialogs = (props) => {
-
-    let text = '';
-
-    let onChangeAreaValue = (event) => {
-        text = event.target.value;
-        props.onChangeAreaValue(text);
-    }
-
-    let onAddPost = () => {
-        props.onAddPost();
-    }
 
     let userDataElements = props.usersData.map(user => <UserData key={user.id} id={user.id} name={user.name} />);
     let messageElements = props.usersPost.map(post => <Message message={post.message} likesCount={post.likesCount} />);

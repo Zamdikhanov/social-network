@@ -8,6 +8,14 @@
     padding: 10px;
 }
 
+.addPost__title {
+    color: #fff;
+    text-shadow: 0.1em 0.1em 0.1em var(--main-dark-color);
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    user-select: none;
+}
+
 .textarea {
     display: block;
     width: 100%;
@@ -16,8 +24,23 @@
     padding: 0.3em 0.5em;
     margin-bottom: 10px;
     resize: none;
+    border-radius: 3px;
 }
 
-button {
+.addPost__button {
+    user-select: none;
     display: block;
+    padding: 0.3em 0.5em;
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0.1em 0.1em 0.1em var(--main-dark-color);
+    border-radius: 3px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    transition: all ease-out 0.3s;
+}
+
+.addPost__button:hover {
+    /* border: 1px solid var(--main-dark-color); */
+    background-color: var(--main-05dark-color);
 }

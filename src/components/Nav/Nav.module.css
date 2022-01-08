@@ -8,6 +8,7 @@
     border: 1px solid var(--main-light-color);
     padding: 7px;
     transition: all linear 0.3s;
+    user-select: none;
 }
 
 .nav:hover {
