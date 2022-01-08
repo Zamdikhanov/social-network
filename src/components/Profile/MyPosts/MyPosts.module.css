@@ -27,6 +27,10 @@
     border-radius: 3px;
 }
 
+.textarea_alert {
+    background-color: rgb(245, 180, 180);
+}
+
 .addPost__button {
     user-select: none;
     display: block;
