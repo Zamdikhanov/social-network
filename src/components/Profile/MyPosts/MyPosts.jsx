@@ -36,8 +36,8 @@ const MyPostsForm = (props) => {
       {props => (
         <Form className={styles.addPost}>
           <h3 className={styles.addPost__title}>Мои сообщения</h3>
-          <Field as='textarea' className={styles.textarea + ' ' + (props.errors.textarea && props.errors.textarea ? styles.textarea_alert : null)} id='textarea' name='textarea' placeholder="Введите ваше сообщение" />
-          {props.errors.textarea && props.errors.textarea && <span>{props.errors.textarea}</span>}
+          <Field as='textarea' className={styles.textarea + ' ' + (props.touched.textarea && props.errors.textarea ? styles.textarea_alert : null)} id='textarea' name='textarea' placeholder="Введите ваше сообщение" />
+          {props.touched.textarea && props.errors.textarea && <span>{props.errors.textarea}</span>}
           <button className={styles.addPost__button} type="submit" >Добавить сообщение</button>
         </Form>
       )}
