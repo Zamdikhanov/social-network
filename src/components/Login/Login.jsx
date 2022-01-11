@@ -2,33 +2,41 @@ import { Formik, Field, Form } from 'formik';
 import React from 'react';
 import styles from './Login.module.css';
 import * as Yup from 'yup';
+import { login } from '../../redux/auth-reducer';
+import { connect } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const Login = (props) => {
     return (
         <>
             <h2 className={styles.title_message} >Необходимо войти в сеть</h2>
-            <LoginForm />
+            <LoginForm {...props} />
         </>
     )
 }
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+
+    if (props.isAuth){
+        return <Navigate to = "social-network/profile" />
+    }
+
     return (
         <Formik
             initialValues={{
-                login: '',
+                email: '',
                 password: '',
                 rememberMe: false,
             }}
             validationSchema={
                 Yup.object({
-                    login: Yup.string().max(15, 'Слишком длинный логин').min(1).required('Пустое поле Логин'),
-                    password: Yup.string().max(20, 'Слишком длинный пароль').min(1).required('Пустое поле Пароль'),
+                    email: Yup.string().max(40, 'Слишком длинная почта').min(1).required('Пустое поле Email'),
+                    password: Yup.string().max(20, 'Слишком длинный пароль').min(1).required('Пустое поле Password'),
                     rememberMe: Yup.boolean(),
                 })
             }
             onSubmit={async values => {
-                alert('login');
+                props.login(values.email, values.password, values.rememberMe);
             }}
         >
             {props => (
@@ -36,13 +44,21 @@ const LoginForm = () => {
                     <div className={styles.form_box__inner} >
                         <h2 className={styles.form_box__title} >Авторизация</h2>
                         <label className={styles.form_box__input}>
-                            Логин
-                            <Field type='text' id='login' name='login' className={styles.form_box__inputField + ' ' + (props.touched.login && props.errors.login ? styles.form_box__inputField_alert : null)} />
+                            Email
+                            <Field type='email' id='email' name='email'
+                                className={styles.form_box__inputField + ' ' + (props.touched.email && props.errors.email ? styles.form_box__inputField_alert : null)} />
                         </label>
+                        <div className={styles.form_box__clue} >
+                            Тестовый Email: <br /><span>free@samuraijs.com</span>
+                        </div>
                         <label className={styles.form_box__input}>
                             Пароль
-                            <Field type='text' id='password' name='password' className={styles.form_box__inputField + ' ' + (props.touched.password && props.errors.password ? styles.form_box__inputField_alert : null)} />
+                            <Field type='password' id='password' name='password'
+                                className={styles.form_box__inputField + ' ' + (props.touched.password && props.errors.password ? styles.form_box__inputField_alert : null)} />
                         </label>
+                        <div className={styles.form_box__clue} >
+                            Тестовый Password: <br /><span>free</span>
+                        </div>
                         <label className={styles.form_box__checkbox}>
                             Запомнить меня
                             <Field type='checkbox' id='rememberMe' name='rememberMe' />
@@ -51,8 +67,8 @@ const LoginForm = () => {
                             Войти
                         </button>
                     </div>
-                    <div className={styles.messageAlert + ' ' + ((props.touched.login && props.errors.login) || (props.touched.password && props.errors.password) ? styles.messageAlert_active : null)} >
-                        {props.touched.login && props.errors.login && <div>{props.errors.login}</div>}
+                    <div className={styles.messageAlert + ' ' + ((props.touched.email && props.errors.email) || (props.touched.password && props.errors.password) ? styles.messageAlert_active : null)} >
+                        {props.touched.email && props.errors.email && <div>{props.errors.email}</div>}
                         {props.touched.password && props.errors.password && <div>{props.errors.password}</div>}
                     </div>
                 </Form>
@@ -61,4 +77,8 @@ const LoginForm = () => {
     )
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+})
+
+export default connect(mapStateToProps, { login })(Login);

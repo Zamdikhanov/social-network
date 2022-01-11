@@ -12,7 +12,9 @@ const MyPosts = (props) => {
   return (
     <main className={styles.myPosts}>
       <MyPostsForm {...props} />
-      {posts}
+      <div className={styles.postsContainer}>
+        {posts}
+      </div>
     </main>
   )
 };

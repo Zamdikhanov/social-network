@@ -1,8 +1,10 @@
 .post {
     background: var(--main-light-color);
     border: 2px solid var(--main-dark-color);
+    border-radius: 10px;
     display: flex;
     padding: 10px;
+    margin-bottom: 5px;
 }
 
 .postImage {

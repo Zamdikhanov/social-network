@@ -11,6 +11,12 @@ const Users = (props) => {
 
     let newPage = React.createRef();
 
+    const toInterval = (page) => {
+        if (Number(page) < 0) {return 1};
+        if (Number(page) > pagesCount) {return pagesCount};
+        return page;
+    }
+
     return (
         <div className={styles.main}>
             <div className={styles.pageNumbersWrap}>
@@ -25,9 +31,9 @@ const Users = (props) => {
                     <Preloader isFetching={props.isFetching} />
                 </div>
                 <div className={styles.pageNumbers}>
-                    <input className={styles.pageNumberInput} type='number' min='1' ref={newPage} placeholder={props.currentPage} />
+                    <input className={styles.pageNumberInput} type='number' ref={newPage} placeholder={props.currentPage} />
                     <button className={styles.switchingPageButton + ' ' + styles.submit} onClick={() => {
-                        props.onPageChanged(Math.round(newPage.current.value));
+                        props.onPageChanged(Math.round(toInterval(newPage.current.value)));
                         newPage.current.value = '';
                     }}>
                         Перейти

@@ -10,42 +10,24 @@ import Login from './components/Login/Login';
 
 
 function App(props) {
-    return ( <
-        BrowserRouter >
-        <
-        div className = "App" >
-        <
-        HeaderContainer / >
-        <
-        Nav / >
-        <
-        main className = "main" >
-        <
-        Routes >
-        <
-        Route path = "social-network/*"
-        element = { < ProfileContainer / > }
-        /> <
-        Route path = "social-network/dialogs/*"
-        element = { < DialogsContainer / > }
-        /> <
-        Route path = "social-network/profile/*"
-        element = { < ProfileContainer / > }
-        /> <
-        Route path = "social-network/users"
-        element = { < UsersContainer / > }
-        /> <
-        Route path = "social-network/content"
-        element = { < div / > }
-        /> <
-        Route path = "social-network/login"
-        element = { < Login / > }
-        /> <
-        /Routes > <
-        /main> <
-        /div > <
-        /BrowserRouter>
-    );
+    return ( 
+    <BrowserRouter>
+        <div className = "App" >
+            <HeaderContainer />
+            <Nav />
+            <main className = "main" >
+                <Routes>
+                    <Route path = "social-network/*" element = { < ProfileContainer /> }/>
+                    <Route path = "social-network/dialogs/*" element = { < DialogsContainer /> }/>
+                    <Route path = "social-network/profile/*" element = { < ProfileContainer /> }/>
+                    <Route path = "social-network/users" element = { < UsersContainer /> }/>
+                    <Route path = "social-network/content" element = { < div /> }/>
+                    <Route path = "social-network/login" element = { < Login /> }/>
+                < /Routes>
+            </main>
+        < /div>
+    </BrowserRouter>
+    )
 };
 
 export default App;

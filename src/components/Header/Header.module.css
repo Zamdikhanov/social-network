@@ -97,7 +97,7 @@
     text-shadow: 0 0 10px rgba(69, 122, 133, 0.0);
 }
 
-.login_block {
+.login_button {
     display: block;
     position: absolute;
     right: 0;
@@ -106,14 +106,17 @@
     margin-right: 20px;
     border: 2px solid var(--main-light-color);
     border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
     transform: translateY(-50%);
 }
 
-.login_block:hover {
-    border: 2px solid var(--main-dark-color);
+.login_button:hover {
+    border: 2px solid #fff;
+    background-color: var(--main-05dark-color);
 }
 
-.login_block__link {
-    color: var(--main-light-color);
+.login_button__link {
+    color: #fff;
     text-decoration: none;
 }

@@ -20,7 +20,7 @@
     box-shadow: 0 2px 7px 5px var(--main-05dark-color);
 }
 
-.form_box__inner{
+.form_box__inner {
     padding: 1em;
     font-size: 16px;
     text-shadow: 0.1em 0.1em var(--main-dark-color);
@@ -40,7 +40,7 @@
 
 .form_box__inner button:hover {
     border: 2px solid #fff;
-    background-color: var(--main-dark-color);
+    background-color: var(--main-05dark-color);
 }
 
 .form_box__title {
@@ -50,7 +50,6 @@
 
 .form_box__input {
     display: flex;
-    margin-bottom: 0.4em;
     justify-content: space-between;
 }
 
@@ -63,9 +62,27 @@
     box-shadow: 0px 0px 10px inset rgb(252, 1, 1);
 }
 
+.form_box__clue {
+    display: block;
+    margin: 0 0 0.5em auto;
+    text-align: right;
+}
+
+.form_box__clue span {
+    user-select: text;
+    padding: 0.4em 0 1em 2em;
+}
+
 .form_box__checkbox {
     display: flex;
-    margin-bottom: 0.4em;
+    margin-bottom: 1em;
+}
+
+.form_box__checkbox input[type="checkbox"] {
+    display: block;
+    margin-left: 0.5em;
+    position: relative;
+    bottom: -0.4em;
 }
 
 .messageAlert {
@@ -80,4 +97,3 @@
 .messageAlert_active {
     background-color: #CC0000;
 }
-

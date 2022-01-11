@@ -9,7 +9,12 @@ import { getUserProfile, getUserStatus, updateUserStatus } from './../../redux/p
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    let userId = this.props.match ? this.props.match.params.userId : 21488;
+    let userId = 21488;
+    if (this.props.match) {
+      userId = this.props.match.params.userId;
+    } else if (this.props.userId != null) {
+      userId = this.props.userId;
+    }
     this.props.getUserProfile(userId);
     this.props.getUserStatus(userId);
   }
@@ -24,6 +29,7 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  userId: state.auth.userId,
 })
 
 const ProfileURLMatch = (props) => {
