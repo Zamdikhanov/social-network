@@ -36,12 +36,14 @@ export const getUserAuthData = () =>
             });
     }
 
-export const login = (email, password, rememberMe) =>
+export const login = (email, password, rememberMe, setStatus) =>
     (dispatch) => {
         authAPI.login(email, password, rememberMe)
             .then(response => {
                 if (response.resultCode === 0) {
                     dispatch(getUserAuthData());
+                } else {
+                    setStatus(response.messages);
                 }
             });
     }

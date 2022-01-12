@@ -18,7 +18,7 @@ const Login = (props) => {
 const LoginForm = (props) => {
 
     if (props.isAuth){
-        return <Navigate to = "social-network/profile" />
+        return <Navigate to = "/social-network/profile/" />
     }
 
     return (
@@ -35,8 +35,9 @@ const LoginForm = (props) => {
                     rememberMe: Yup.boolean(),
                 })
             }
-            onSubmit={async values => {
-                props.login(values.email, values.password, values.rememberMe);
+            onSubmit={ (values, { setSubmitting, setStatus})  => {
+                props.login(values.email, values.password, values.rememberMe, setStatus);
+                setSubmitting(false);
             }}
         >
             {props => (
@@ -67,10 +68,12 @@ const LoginForm = (props) => {
                             Войти
                         </button>
                     </div>
-                    <div className={styles.messageAlert + ' ' + ((props.touched.email && props.errors.email) || (props.touched.password && props.errors.password) ? styles.messageAlert_active : null)} >
+                    <div className={styles.messageAlert + ' ' + ((props.touched.email && props.errors.email) || (props.touched.password && props.errors.password) || (props.status) ? styles.messageAlert_active : null)} >
                         {props.touched.email && props.errors.email && <div>{props.errors.email}</div>}
                         {props.touched.password && props.errors.password && <div>{props.errors.password}</div>}
+                        <div>{props.status}</div>
                     </div>
+                    
                 </Form>
             )}
         </Formik>

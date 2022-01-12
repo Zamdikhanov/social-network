@@ -3,11 +3,12 @@ import styles from './Profilestatus.module.css';
 
 
 class Profilestatus extends React.Component {
-  // statusInputRef = React.createRef;
-
-  state = {
-    editMode: false,
-    status: this.props.status,
+  constructor(props) {
+    super();
+    this.state = {
+      editMode: false,
+      status: props.status,
+    }
   }
 
   toggleEditMode = () => {
@@ -20,11 +21,11 @@ class Profilestatus extends React.Component {
   }
 
   onStatusChange = (e) => {
-    this.setState({ status: e.currentTarget.value});
+    this.setState({status: e.currentTarget.value});
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (prevProps.status !== this.state.status) {
+    if (prevProps.status !== this.props.status) {
       this.setState({status: this.props.status})
     }
   }

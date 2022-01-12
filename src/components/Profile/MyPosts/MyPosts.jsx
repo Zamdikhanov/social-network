@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 
 const MyPosts = (props) => {
 
-  let posts = props.postsData.map(postsData => <Post postsData={postsData} />).reverse();
+  let posts = props.postsData.map((postsData, i) => <Post key={i} postsData={postsData} />).reverse();
 
   return (
     <main className={styles.myPosts}>

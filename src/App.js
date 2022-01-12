@@ -23,9 +23,9 @@ function App(props) {
                     <Route path = "social-network/users" element = { < UsersContainer /> }/>
                     <Route path = "social-network/content" element = { < div /> }/>
                     <Route path = "social-network/login" element = { < Login /> }/>
-                < /Routes>
+                </Routes>
             </main>
-        < /div>
+        </div>
     </BrowserRouter>
     )
 };

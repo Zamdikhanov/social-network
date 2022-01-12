@@ -27,6 +27,17 @@
 .profile_status__button {
     display: inline-block;
     cursor: pointer;
+    padding: 0 0.2em;
+    border-radius: 3px;
+    border: 2px solid var(--main-light-color);
+    background-color: transparent;
+    color: var(--main-dark-color);
+    transition: all ease-out 0.3s;
+}
+
+.profile_status__button:hover {
+    background-color: var(--main-05light-color);
+    color: #000;
 }
 
 .profile_status__inner input {
