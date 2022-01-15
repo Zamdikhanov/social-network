@@ -1,7 +1,7 @@
 {
-  "main.css": "/social-network/static/css/main.d4c24838.chunk.css",
-  "main.js": "/social-network/static/js/main.8edb79dd.chunk.js",
-  "main.js.map": "/social-network/static/js/main.8edb79dd.chunk.js.map",
+  "main.css": "/social-network/static/css/main.1ba5998f.chunk.css",
+  "main.js": "/social-network/static/js/main.e7176665.chunk.js",
+  "main.js.map": "/social-network/static/js/main.e7176665.chunk.js.map",
   "static/js/1.2652c4bd.chunk.js": "/social-network/static/js/1.2652c4bd.chunk.js",
   "static/js/1.2652c4bd.chunk.js.map": "/social-network/static/js/1.2652c4bd.chunk.js.map",
   "runtime~main.js": "/social-network/static/js/runtime~main.22e660ce.js",
@@ -10,8 +10,8 @@
   "static/media/unload-avatar.webp": "/social-network/static/media/unload-avatar.482a2308.webp",
   "static/media/preloader.svg": "/social-network/static/media/preloader.04505faa.svg",
   "static/media/lenin-way.png": "/social-network/static/media/lenin-way.85e5d1fb.png",
-  "static/css/main.d4c24838.chunk.css.map": "/social-network/static/css/main.d4c24838.chunk.css.map",
+  "static/css/main.1ba5998f.chunk.css.map": "/social-network/static/css/main.1ba5998f.chunk.css.map",
   "index.html": "/social-network/index.html",
-  "precache-manifest.b4d06caaee28ce08a943c6aa83203225.js": "/social-network/precache-manifest.b4d06caaee28ce08a943c6aa83203225.js",
+  "precache-manifest.5b8d1ef4a55d4e1008134ff89641888d.js": "/social-network/precache-manifest.5b8d1ef4a55d4e1008134ff89641888d.js",
   "service-worker.js": "/social-network/service-worker.js"
 }
