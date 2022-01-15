@@ -2,22 +2,23 @@
     padding-bottom: 0.2em;
     margin-bottom: 15px;
     width: 100%;
+    font-size: 1rem;
 }
 
 .profile_status__inner {
-    display: flex;
     width: 100%;
 }
 
 .profile_status__text {
-    display: block;
+    display: inline;
     margin-right: 0.5em;
     color: rgb(76, 81, 85);
     font-weight: 700;
+    font-size: inherit;
 }
 
 .profile_status__inner span {
-    display: block;
+    display: inline;
     color: rgb(0, 0, 0);
     font-weight: 400;
     margin-right: 0.5em;
@@ -25,7 +26,7 @@
 }
 
 .profile_status__button {
-    display: inline-block;
+    display: inline;
     cursor: pointer;
     padding: 0 0.2em;
     border-radius: 3px;
@@ -41,8 +42,9 @@
 }
 
 .profile_status__inner input {
-    display: block;
-    flex: 1 0 auto;
+    display: inline;
+    font-size: inherit;
+    width: calc(100% - 4em);
     color: rgb(0, 0, 0);
     font-weight: 400;
     background-color: rgba(255, 255, 255, 0.7);

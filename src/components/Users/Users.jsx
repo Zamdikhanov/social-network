@@ -12,8 +12,8 @@ const Users = (props) => {
     let newPage = React.createRef();
 
     const toInterval = (page) => {
-        if (Number(page) < 0) {return 1};
-        if (Number(page) > pagesCount) {return pagesCount};
+        if (Number(page) < 0) { return 1 };
+        if (Number(page) > pagesCount) { return pagesCount };
         return page;
     }
 
@@ -24,7 +24,9 @@ const Users = (props) => {
                     <button className={styles.switchingPageButton + ' ' + styles.leftNarrow} onClick={() => { props.onPageChanged(props.currentPage - 1) }}>
                         Предыдущая
                     </button>
-                    <div className={styles.pageNumber_text}> стр. <span>{props.currentPage}</span> из {pagesCount} </div>
+                    <div className={styles.pageNumber_text}>
+                        стр. <span>{props.currentPage}</span> из {pagesCount}
+                    </div>
                     <button className={styles.switchingPageButton + ' ' + styles.rightNarrow} onClick={() => { props.onPageChanged(props.currentPage + 1) }}>
                         Следующая
                     </button>

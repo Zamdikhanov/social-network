@@ -62,7 +62,7 @@
     font-size: 24px;
     text-align: center;
     text-decoration: none;
-    width: 200px;
+    width: 160px;
     margin-left: 20px;
     border-radius: 5px;
     transform: translateY(-50%);
@@ -119,4 +119,102 @@
 .login_button__link {
     color: #fff;
     text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+    .header {
+        height: 130px;
+    }
+    .header::before {
+        font-size: 220px;
+    }
+    .header:hover::before {
+        font-size: 130px;
+    }
+    .header h2 {
+        font-size: 125px;
+    }
+    .header_text {
+        font-size: 20px;
+        width: 140px;
+    }
+}
+
+@media (max-width: 900px) {
+    .header {
+        height: 100px;
+    }
+    .header::before {
+        font-size: 160px;
+    }
+    .header:hover::before {
+        font-size: 100px;
+    }
+    .header h2 {
+        font-size: 95px;
+        letter-spacing: 2px;
+    }
+    .header_text {
+        font-size: 16px;
+        width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 80px;
+        justify-content: left;
+    }
+    .header::before {
+        font-size: 140px;
+    }
+    .header:hover::before {
+        font-size: 80px;
+    }
+    .header h2 {
+        font-size: 75px;
+        margin-left: 10px;
+        letter-spacing: 1px;
+    }
+    .header_text {
+        display: none;
+    }
+    .login_button {
+        padding: 8px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        height: 60px;
+    }
+    .header::before {
+        font-size: 110px;
+    }
+    .header:hover::before {
+        font-size: 60px;
+    }
+    .header h2 {
+        font-size: 55px;
+    }
+    .login_button {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        height: 50px;
+    }
+    .header::before {
+        font-size: 100px;
+    }
+    .header:hover::before {
+        font-size: 50px;
+    }
+    .header h2 {
+        font-size: 40px;
+        letter-spacing: 0;
+    }
 }

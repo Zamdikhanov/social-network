@@ -4,17 +4,33 @@
     padding: 10px;
 }
 
-.profile_info__image {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
+.profile_info__image_box {
+    position: relative;
+    width: 36%;
+    align-self: flex-start;
     display: block;
     border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile_info__image_box::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}
+
+.profile_info__image {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .profile_info__content {
     padding: 0 30px;
-    width: 100%;
+    width: 64%;
     background-image: url('../../../assets/images/profile-bg.webp');
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -51,4 +67,19 @@
 .profile_info__contact a {
     color: var(--main-dark-color);
     font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .profile_info_container {
+        display: block;
+        padding: 5px;
+    }
+    .profile_info__image_box {
+        width: 100%;
+        display: block;
+    }
+    .profile_info__content {
+        padding: 10px 10px;
+        width: 100%;
+    }
 }

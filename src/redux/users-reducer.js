@@ -15,7 +15,7 @@ let initialState = {
     ],
     pageSize: 12,
     totalUsersCount: 0,
-    currentPage: 1300,
+    currentPage: 500,
     isFetching: false,
     followingInProgress: [],
 };

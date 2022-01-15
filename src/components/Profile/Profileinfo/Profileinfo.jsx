@@ -19,7 +19,7 @@ const Profileinfo = (props) => {
             <span>Описание:</span>данные не загружены
           </div>
           <div>
-            <Preloader isFetching={props.isFetching}/>
+            <Preloader isFetching={props.isFetching} />
           </div>
           <div className={styles.profile_info__contact}>
             <ul> Контакты
@@ -34,12 +34,14 @@ const Profileinfo = (props) => {
   }
   return (
     <div className={styles.profile_info_container}>
-      <img className={styles.profile_info__image} src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt='avatar'></img>
+      <div className={styles.profile_info__image_box}>
+        <img className={styles.profile_info__image} src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt='avatar'></img>
+      </div>
       <div className={styles.profile_info__content} >
         <div className={styles.profile_info__title}>
           {props.profile.fullName}
         </div>
-        <Profilestatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+        <Profilestatus status={props.status} updateUserStatus={props.updateUserStatus} />
         <div className={styles.profile_info__about}>
           <span>Обо мне:</span> {props.profile.aboutMe} <br />
           <span>В поисках работы:</span> {props.profile.lookingForAJob ? ' Да' : ' Нет'} <br />
