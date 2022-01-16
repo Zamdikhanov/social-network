@@ -206,10 +206,14 @@ input[type="number"]::-webkit-inner-spin-button {
 @media (max-width: 900px) {
     .userCard {
         width: calc( (100% - 3*2*5px)/3);
+        top: 0;
     }
     .button {
         padding: 3px 5px;
         font-size: 14px;
+    }
+    .switchingPageButton:hover {
+        letter-spacing: 0;
     }
 }
 

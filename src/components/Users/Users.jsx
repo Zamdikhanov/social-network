@@ -44,8 +44,8 @@ const Users = (props) => {
             </div>
             {props.users.map(user => (
                 <div key={user.id} className={styles.userCard} style={{ 'backgroundImage': user.photos.large != null ? ("url(" + user.photos.large + ")") : ("url(" + userPhoto + ")") }}>
-                    <div className={styles.gradient}>
-                    </div>
+                    {/* <div className={styles.gradient}>
+                    </div> */}
                     <div className={styles.userCard__inner}>
                         <div className={styles.fullName}>
                             {user.name}
