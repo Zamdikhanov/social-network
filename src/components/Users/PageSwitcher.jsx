@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Preloader from '../Common/Preloader/Preloader';
 
 
-const Users = (props) => {
+const PageSwitcher = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
@@ -41,32 +41,8 @@ const Users = (props) => {
                     </button>
                 </div>
             </div>
-            <Preloader isFetching={props.isFetching} />
-            {props.users.map(user => (
-                <div key={user.id} className={styles.userCard} style={{ 'backgroundImage': user.photos.large != null ? ("url(" + user.photos.large + ")") : ("url(" + userPhoto + ")") }}>
-                    <div className={styles.userCard__inner}>
-                        <div className={styles.fullName}>
-                            {user.name}
-                        </div>
-                        <div className={styles.data}>
-                            ID:{user.id}
-                        </div>
-                        <div className={styles.data}>
-                            {user.status}
-                        </div>
-                        <button disabled={props.followingInProgress.some(id => id === user.id)} className={styles.button} onClick={() => props.onClickFollow(user)}>
-                            {(user.followed) ? 'Отписаться' : 'Подписаться'}
-                        </button>
-                        <NavLink to={'/social-network/profile/' + user.id} className={styles.link}>
-                            <button className={styles.button}>Перейти в профиль</button>
-                        </NavLink>
-                    </div>
-                </div>
-            )
-            )
-            }
         </div>
     )
 }
 
-export default Users;
+export default PageSwitcher;

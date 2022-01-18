@@ -1,60 +1,55 @@
 import React from 'react';
+import { useState } from 'react';
 import styles from './Profilestatus.module.css';
 
 
-class Profilestatus extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      editMode: false,
-      status: props.status,
-    }
-  }
+const Profilestatus = (props) => {
 
-  toggleEditMode = () => {
-    if (this.state.editMode) {
-      this.setState({ editMode: false });
-      this.props.updateUserStatus(this.state.status);
+  let [editMode, setEditMode] = useState(false);
+  let [status, setStatus] = useState(props.status)
+
+  const toggleEditMode = () => {
+    if (editMode) {
+      setEditMode(false);
+      props.updateUserStatus(status);
     } else {
-      this.setState({ editMode: true })
+      setEditMode(true);
     }
   }
 
-  onStatusChange = (e) => {
-    this.setState({status: e.currentTarget.value});
+  const onStatusChange = (e) => {
+    setStatus(e.currentTarget.value);
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    if (prevProps.status !== this.props.status) {
-      this.setState({status: this.props.status})
-    }
-  }
+  // componentDidUpdate (prevProps, prevState) {
+  //   if (prevProps.status !== this.props.status) {
+  //     this.setState({status: this.props.status})
+  //   }
+  // }
 
-  render() {
-    return (
-      <div className={styles.profile_status}>
-        {!this.state.editMode
-          ? (
-            <div className={styles.profile_status__inner}>
-              <div className={styles.profile_status__text}>
-                Статус:
-              </div>
-              <span>{this.props.status || '*****'}</span>
-              <button className={styles.profile_status__button} onClick={this.toggleEditMode} >изм.</button>
+  return (
+    <div className={styles.profile_status}>
+      {!editMode
+        ? (
+          <div className={styles.profile_status__inner}>
+            <div className={styles.profile_status__text}>
+              Статус:
             </div>
-          )
-          : (
-            <div className={styles.profile_status__inner}>
-              <div className={styles.profile_status__text}>
-                Статус:
-              </div>
-              <input onChange={this.onStatusChange} value={this.state.status} onBlur={this.toggleEditMode} autoFocus={true} />
+            <span>{props.status || '*****'}</span>
+            <button className={styles.profile_status__button} onClick={toggleEditMode} >изм.</button>
+          </div>
+        )
+        : (
+          <div className={styles.profile_status__inner}>
+            <div className={styles.profile_status__text}>
+              Статус:
             </div>
-          )
-        }
-      </div>
-    )
-  }
+            <input onChange={onStatusChange} value={status} onBlur={toggleEditMode} autoFocus={true} />
+          </div>
+        )
+      }
+    </div>
+  )
 };
 
 export default Profilestatus;
