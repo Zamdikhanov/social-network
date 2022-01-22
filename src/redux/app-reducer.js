@@ -18,7 +18,6 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-
 export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 
 export const initializeApp = () =>
@@ -29,6 +28,5 @@ export const initializeApp = () =>
         })
 
     }
-
 
 export default appReducer;

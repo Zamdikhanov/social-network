@@ -13,6 +13,7 @@ class UsersContainer extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.requestUsers(pageNumber, this.props.pageSize);
+        window.scrollTo(0, 0);
     }
 
     onClickFollow = (user) => {
@@ -22,7 +23,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-                <Preloader isFetching={this.props.isFetching} />
+                {/* <Preloader isFetching={this.props.isFetching} /> */}
                 <Users
                     totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}
@@ -31,6 +32,7 @@ class UsersContainer extends React.Component {
                     followingInProgress={this.props.followingInProgress}
                     onPageChanged={this.onPageChanged}
                     onClickFollow={this.onClickFollow}
+                    isFetching = {this.props.isFetching}
                 />
             </>)
     }

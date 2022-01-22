@@ -1,70 +1,22 @@
 import React from 'react';
 import styles from './Users.module.css';
-import userPhoto from '../../assets/images/unload-avatar.webp';
-import { NavLink } from 'react-router-dom';
+import PageSwitcher from './PageSwitcher';
+import UserCard from './UserCard/UserCard';
 import Preloader from '../Common/Preloader/Preloader';
 
 
 const Users = (props) => {
-
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
-    let newPage = React.createRef();
-
-    const toInterval = (page) => {
-        if (Number(page) < 0) { return 1 };
-        if (Number(page) > pagesCount) { return pagesCount };
-        return page;
-    }
-
     return (
         <div className={styles.main}>
-            <div className={styles.pageNumbersWrap}>
-                <div className={styles.pageNumbers}>
-                    <button className={styles.switchingPageButton + ' ' + styles.leftNarrow} onClick={() => { props.onPageChanged(props.currentPage - 1) }}>
-                        Предыдущая
-                    </button>
-                    <div className={styles.pageNumber_text}>
-                        стр. <span>{props.currentPage}</span> из {pagesCount}
-                    </div>
-                    <button className={styles.switchingPageButton + ' ' + styles.rightNarrow} onClick={() => { props.onPageChanged(props.currentPage + 1) }}>
-                        Следующая
-                    </button>
-                </div>
-                <div className={styles.pageNumbers}>
-                    <input className={styles.pageNumberInput} type='number' ref={newPage} placeholder={props.currentPage} />
-                    <button className={styles.switchingPageButton + ' ' + styles.submit} onClick={() => {
-                        props.onPageChanged(Math.round(toInterval(newPage.current.value)));
-                        newPage.current.value = '';
-                    }}>
-                        Перейти
-                    </button>
-                </div>
-            </div>
-            <Preloader isFetching={props.isFetching} />
-            {props.users.map(user => (
-                <div key={user.id} className={styles.userCard} style={{ 'backgroundImage': user.photos.large != null ? ("url(" + user.photos.large + ")") : ("url(" + userPhoto + ")") }}>
-                    <div className={styles.userCard__inner}>
-                        <div className={styles.fullName}>
-                            {user.name}
-                        </div>
-                        <div className={styles.data}>
-                            ID:{user.id}
-                        </div>
-                        <div className={styles.data}>
-                            {user.status}
-                        </div>
-                        <button disabled={props.followingInProgress.some(id => id === user.id)} className={styles.button} onClick={() => props.onClickFollow(user)}>
-                            {(user.followed) ? 'Отписаться' : 'Подписаться'}
-                        </button>
-                        <NavLink to={'/social-network/profile/' + user.id} className={styles.link}>
-                            <button className={styles.button}>Перейти в профиль</button>
-                        </NavLink>
-                    </div>
-                </div>
-            )
-            )
-            }
+            <PageSwitcher {...props} />
+            {(props.isFetching)
+                ? <Preloader isFetching={props.isFetching} />
+                : props.users.map(user => (
+                    <UserCard key={user.id} user={user}
+                        followingInProgress={props.followingInProgress}
+                        onClickFollow={props.onClickFollow} />
+                ))}
+            <PageSwitcher {...props} />
         </div>
     )
 }

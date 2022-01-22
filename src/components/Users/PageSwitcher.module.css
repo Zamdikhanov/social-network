@@ -1,0 +1,116 @@
+.pageNumbersWrap {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    margin: 5px 0;
+    background-color: #fff;
+}
+
+.pageNumbers {
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+.switchingPageButton {
+    display: block;
+    padding: 0.3em 0;
+    color: #fff;
+    border: 2px solid var(--main-dark-color);
+    background-color: var(--main-dark-color);
+    width: 9em;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    transition: all ease-in-out 0.2s;
+}
+
+.switchingPageButton:hover {
+    letter-spacing: 0.05em;
+}
+
+.leftNarrow:before {
+    content: '';
+    position: absolute;
+    padding: 0px;
+    left: -2.4em;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 2.4em;
+    height: 2.8em;
+    border: 1.4em solid #fff;
+    border-right: 1em solid var(--main-dark-color);
+}
+
+.rightNarrow:before {
+    content: '';
+    position: absolute;
+    padding: 0px;
+    right: -2.4em;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 2.4em;
+    height: 2.8em;
+    border: 1.4em solid #fff;
+    border-left: 1em solid var(--main-dark-color);
+}
+
+.pageNumber_text {
+    padding: 0.3em 0.5em;
+    border: 2px solid var(--main-dark-color);
+}
+
+.pageNumber_text span {
+    font-weight: 700;
+    color: var(--main-dark-color);
+}
+
+.pageNumberInput {
+    padding: 0.3em;
+    color: #000;
+    border-radius: 5px 0 0 5px;
+    border: 2px solid var(--main-dark-color);
+    background-color: #fff;
+    width: 7em;
+    user-select: auto;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.submit {
+    border-radius: 0 5px 5px 0;
+    border: 2px solid var(--main-dark-color);
+    border-left: none;
+    width: 7em;
+}
+
+@media (max-width: 900px) {
+    .switchingPageButton:hover {
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .switchingPageButton {
+        font-size: 14px;
+        font-weight: 400;
+        width: 6em;
+        letter-spacing: -1px;
+    }
+    .pageNumber_text {
+        font-size: 14px;
+        padding: 0.3em 0.1em;
+        border: 2px solid var(--main-dark-color);
+    }
+    .pageNumberInput {
+        font-size: 14px;
+    }
+}

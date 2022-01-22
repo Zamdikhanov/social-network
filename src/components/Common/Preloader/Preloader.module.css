@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+}
+
+.img {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

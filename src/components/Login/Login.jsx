@@ -15,9 +15,9 @@ const Login = (props) => {
     )
 }
 
-const LoginForm = (props) => {
+const LoginForm = ({isAuth, login}) => {
 
-    if (props.isAuth){
+    if (isAuth){
         return <Navigate to = "/social-network/profile/" />
     }
 
@@ -36,7 +36,7 @@ const LoginForm = (props) => {
                 })
             }
             onSubmit={ (values, { setSubmitting, setStatus})  => {
-                props.login(values.email, values.password, values.rememberMe, setStatus);
+                login(values.email, values.password, values.rememberMe, setStatus);
                 setSubmitting(false);
             }}
         >

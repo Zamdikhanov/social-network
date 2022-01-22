@@ -1,12 +1,15 @@
 import React from "react";
 import preloader from './../../../assets/images/preloader.svg';
+import styles from './Preloader.module.css';
 
 
 let Preloader = (props) => {
     return (
-        <>
-            {props.isFetching ? <img src={preloader} alt="download" ></img> : null}
-        </>
+        <div className={styles.container}>
+            {props.isFetching
+                ? <img className={styles.img} src={preloader} alt="download" ></img>
+                : null}
+        </div>
     )
 }
 

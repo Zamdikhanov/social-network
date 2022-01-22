@@ -62,7 +62,6 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-
 export const toggleStateFollow = (userId) => ({ type: TOGGLE_FOLLOW, userId: userId });
 export const setUsers = (users) => ({ type: SET_USERS, users: users });
 export const setTotalCount = (count) => ({ type: SET_TOTAL_COUNT, count: count });
@@ -70,37 +69,27 @@ export const setCurrentPages = (page) => ({ type: SET_CURRENT_PAGE, page: page }
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching: isFetching });
 export const toggleFollowingInProgress = (isFetching, id) => ({ type: TOGGLE_FOLOWING_IN_PROGRESS, isFetching: isFetching, id: id });
 
-export const requestUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+export const requestUsers = (currentPage, pageSize) =>
+    async(dispatch) => {
         dispatch(setCurrentPages(currentPage));
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalCount(data.totalCount));
-        });
+        let data = await usersAPI.getUsers(currentPage, pageSize);
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalCount(data.totalCount));
     }
-}
 
-export const toggleFollow = (user) => {
-    return (dispatch) => {
+export const toggleFollow = (user) =>
+    async(dispatch) => {
         dispatch(toggleFollowingInProgress(true, user.id));
+        let data;
         if (user.followed) {
-            usersAPI.deleteFollow(user.id).then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(toggleStateFollow(user.id));
-                }
-                dispatch(toggleFollowingInProgress(false, user.id));
-            })
+            data = await usersAPI.deleteFollow(user.id);
         } else {
-            usersAPI.postFollow(user.id).then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(toggleStateFollow(user.id));
-                };
-                dispatch(toggleFollowingInProgress(false, user.id));
-            })
+            data = await usersAPI.postFollow(user.id);
         }
+        if (data.resultCode === 0) { dispatch(toggleStateFollow(user.id)) };
+        dispatch(toggleFollowingInProgress(false, user.id));
     }
-}
 
 export default usersReducer;
