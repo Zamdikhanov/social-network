@@ -6,6 +6,13 @@ import Profilestatus from './Profilestatus';
 
 
 const Profileinfo = (props) => {
+
+  const onSaveAvatar = (e) => {
+    if (e.target.files.length){
+      props.savePhoto(e.target.files[0]);
+    }
+  }
+
   if (!props.profile) {
     return (
       <div className={styles.profile_info_container}>
@@ -36,6 +43,7 @@ const Profileinfo = (props) => {
     <div className={styles.profile_info_container}>
       <div className={styles.profile_info__image_box}>
         <img className={styles.profile_info__image} src={props.profile.photos.large ? props.profile.photos.large : userPhoto} alt='avatar'></img>
+        {props.userId && !props.match && <input className={styles.profile_info__image_button} type={'file'} onChange={onSaveAvatar} />}
       </div>
       <div className={styles.profile_info__content} >
         <div className={styles.profile_info__title}>

@@ -3,12 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import Profile from './Profile';
-import { getUserProfile, getUserStatus, updateUserStatus } from './../../redux/profile-reducer';
+import { getUserProfile, getUserStatus, updateUserStatus, savePhoto } from './../../redux/profile-reducer';
 
 
 class ProfileContainer extends React.Component {
 
-  componentDidMount() {
+  refreshProfile() {
     let userId = 21488;
     if (this.props.match) {
       userId = this.props.match.params.userId;
@@ -17,6 +17,18 @@ class ProfileContainer extends React.Component {
     }
     this.props.getUserProfile(userId);
     this.props.getUserStatus(userId);
+  }
+
+  componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.match) {
+      if (this.props.match.params.userId !== prevProps.match.params.userId) {
+        this.refreshProfile()
+      }
+    }
   }
 
   render() {
@@ -38,5 +50,5 @@ const ProfileURLMatch = (props) => {
 }
 
 export default connect(mapStateToProps, {
-  getUserProfile, getUserStatus, updateUserStatus
+  getUserProfile, getUserStatus, updateUserStatus, savePhoto
 })(ProfileURLMatch);

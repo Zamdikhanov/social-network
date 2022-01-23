@@ -1,4 +1,3 @@
-
 const DIALOG_ADD_POST = 'DIALOG-ADD-POST';
 
 let initialState = {
@@ -20,7 +19,7 @@ const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
         case DIALOG_ADD_POST:
             let dialogNewPost = {
-                id: 5,
+                id: state.usersPost.length,
                 message: action.text,
                 likesCount: 0,
             };

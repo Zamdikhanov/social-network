@@ -28,6 +28,21 @@
     width: 100%;
 }
 
+.profile_info__image_button {
+    position: absolute;
+    bottom: -110%;
+    right: 0;
+    width: 100%;
+    background-color: var(--main-dark-color);
+    color: #fff;
+    padding: 0.5em;
+    transition: all ease-in-out 0.5s;
+}
+
+.profile_info__image_box:hover .profile_info__image_button {
+    bottom: 0;
+}
+
 .profile_info__content {
     padding: 0 30px;
     width: 64%;

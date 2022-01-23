@@ -5,7 +5,7 @@ import styles from './UserData.module.css';
 const UserData = (props) => {
     return (
         <div className={styles.dialog + ' ' + styles.active}>
-            <NavLink to={'social-network/login' + props.id} > {props.name} </NavLink>
+            <NavLink to={'/login' + props.id} > {props.name} </NavLink>
         </div>
     )
 };

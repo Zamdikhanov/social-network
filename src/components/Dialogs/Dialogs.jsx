@@ -8,7 +8,7 @@ import UserData from './UserData/UserData';
 const Dialogs = (props) => {
 
     let userDataElements = props.usersData.map(user => <UserData key={user.id} id={user.id} name={user.name} />);
-    let messageElements = props.usersPost.map(post => <Message message={post.message} likesCount={post.likesCount} />);
+    let messageElements = props.usersPost.map(post => <Message key={post.id} message={post.message} likesCount={post.likesCount} />);
 
 
     return (
