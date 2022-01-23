@@ -33,7 +33,7 @@ let mapStateToProps = (state) => ({
 })
 
 const ProfileURLMatch = (props) => {
-  const match = useMatch('social-network/profile/:userId/');
+  const match = useMatch('/profile/:userId/');
   return <ProfileContainer {...props} match={match} />;
 }
 

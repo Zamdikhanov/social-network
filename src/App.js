@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
 import './App.css';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Nav from './components/Nav/Nav';
@@ -22,28 +22,28 @@ class App extends React.Component {
         return (<Preloader />);
         }
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className="App" >
                     <HeaderContainer />
                     <Nav />
                     <main className="main" >
                         <Routes >
-                            <Route path="social-network/*"
+                            <Route path="/*"
                                 element={< ProfileContainer />} />
-                            <Route path="social-network/dialogs/*"
+                            <Route path="/dialogs/*"
                                 element={< DialogsContainer />} />
-                            <Route path="social-network/profile/*"
+                            <Route path="/profile/*"
                                 element={< ProfileContainer />} />
-                            <Route path="social-network/users"
+                            <Route path="/users"
                                 element={< UsersContainer />} />
-                            <Route path="social-network/content"
+                            <Route path="/content"
                                 element={< div />} />
-                            <Route path="social-network/login"
+                            <Route path="/login"
                                 element={< Login />} />
                         </Routes>
                     </main>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 };

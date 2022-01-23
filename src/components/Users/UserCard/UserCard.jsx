@@ -21,7 +21,7 @@ const UserCard = ({ user, followingInProgress, onClickFollow }) => {
                 <button disabled={followingInProgress.some(id => id === user.id)} className={styles.button} onClick={() => onClickFollow(user)}>
                     {(user.followed) ? 'Отписаться' : 'Подписаться'}
                 </button>
-                <NavLink to={'/social-network/profile/' + user.id} className={styles.link}>
+                <NavLink to={'/profile/' + user.id} className={styles.link}>
                     <button className={styles.button} onClick={() => window.scrollTo(0, 0)}>Перейти в профиль</button>
                 </NavLink>
             </div>

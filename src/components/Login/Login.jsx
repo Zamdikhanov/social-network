@@ -18,7 +18,7 @@ const Login = (props) => {
 const LoginForm = ({isAuth, login}) => {
 
     if (isAuth){
-        return <Navigate to = "/social-network/profile/" />
+        return <Navigate to = "/profile/" />
     }
 
     return (
