@@ -3,7 +3,7 @@ import * as axios from "axios";
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
-    headers: { "API-KEY": "b076c552-0822-4bb0-890f-3a6e6d452108" }
+    headers: { 'API-KEY': `${process.env.REACT_APP_API_KEY}` }
 });
 
 export const usersAPI = {
@@ -63,7 +63,15 @@ export const profileAPI = {
                 }
             })
         )
-    }
+    },
+    saveProfile(profile) {
+        return (
+            instance.put(`profile`, profile)
+            .then(
+                response => response.data
+            )
+        )
+    },
 }
 
 export const authAPI = {

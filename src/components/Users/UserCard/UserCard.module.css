@@ -3,7 +3,7 @@
     margin: 5px;
     color: white;
     overflow: hidden;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), -1px -1px 3px rgba(18, 115, 135, 0.8);
     background-color: whitesmoke;
     background-repeat: no-repeat;
     background-position: center;
@@ -50,6 +50,8 @@
     font-size: 40px;
     font-weight: 100;
     z-index: 1;
+    font-family: 'Karantina', cursive, 'Roboto', sans-serif;
+    letter-spacing: 0.02em;
 }
 
 .data {

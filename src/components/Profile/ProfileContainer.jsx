@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import Profile from './Profile';
-import { getUserProfile, getUserStatus, updateUserStatus, savePhoto } from './../../redux/profile-reducer';
+import { getUserProfile, getUserStatus, updateUserStatus, savePhoto, saveProfile } from './../../redux/profile-reducer';
 
 
 class ProfileContainer extends React.Component {
@@ -28,6 +28,10 @@ class ProfileContainer extends React.Component {
       if (this.props.match.params.userId !== prevProps.match.params.userId) {
         this.refreshProfile()
       }
+    } else {
+      if (prevProps.match) {
+        this.refreshProfile()
+      }
     }
   }
 
@@ -50,5 +54,5 @@ const ProfileURLMatch = (props) => {
 }
 
 export default connect(mapStateToProps, {
-  getUserProfile, getUserStatus, updateUserStatus, savePhoto
+  getUserProfile, getUserStatus, updateUserStatus, savePhoto, saveProfile
 })(ProfileURLMatch);

@@ -72,16 +72,25 @@ export const getUserStatus = (userId) =>
 
 export const updateUserStatus = (status) =>
     async(dispatch) => {
-        let responce = profileAPI.updateStatus(status);
+        let responce = await profileAPI.updateStatus(status);
         if (responce.data.resultCode === 0)
             dispatch(setStatus(status));
     }
 
 export const savePhoto = (photo) =>
     async(dispatch) => {
-        let responce = profileAPI.savePhoto(photo);
+        let responce = await profileAPI.savePhoto(photo);
         if (responce.data.resultCode === 0)
             dispatch(setPhoto(responce.data.data.photos));
+    }
+
+export const saveProfile = (profile, setStatus) =>
+    async(dispatch, getState) => {
+        let response = await profileAPI.saveProfile(profile);
+        if (response.resultCode === 0) {
+            const myID = getState().auth.userId;
+            dispatch(getUserProfile(myID));
+        }
     }
 
 export default profileReducer;

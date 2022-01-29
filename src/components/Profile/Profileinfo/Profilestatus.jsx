@@ -30,7 +30,10 @@ const Profilestatus = (props) => {
               Статус:
             </div>
             <span>{props.status || '*****'}</span>
-            <button className={styles.profile_status__button} onClick={toggleEditMode} >изм.</button>
+            {props.userId && !props.match &&
+              <button className={styles.profile_status__button} onClick={toggleEditMode} >
+                изм.
+              </button>}
           </div>
         )
         : (

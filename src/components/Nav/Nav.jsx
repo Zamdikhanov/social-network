@@ -16,7 +16,7 @@ const Nav = () => {
                     <NavLink to="/content" className = { navData => navData.isActive ? styles.active_a : styles.item }>Контент</NavLink>
                 </li>
                 <li className={styles.nav__list_item}>
-                    <NavLink to="/users" className = { navData => navData.isActive ? styles.active_a : styles.item }>Пользователи</NavLink>
+                    <NavLink to="/users" className = { navData => navData.isActive ? styles.active_a : styles.item }>Однокурсники</NavLink>
                 </li>
             </ul>
         </nav>
