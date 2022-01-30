@@ -85,6 +85,13 @@
     bottom: -0.4em;
 }
 
+.captcha_img {
+    display: block;
+    margin: 0 auto 15px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 .messageAlert {
     width: 100%;
     min-height: 3.5em;

@@ -17,12 +17,27 @@
 .form_box__input {
     display: flex;
     justify-content: space-between;
+    position: relative;
+}
+
+.alarm {
+    position: absolute;
+    display: block;
+    font-size: 14px;
+    line-height: 1em;
+    padding: 4px;
+    color: #fff;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 3px;
+    right: 0;
+    bottom: -0.4em;
 }
 
 .form_inputLarge {
     display: inline-block;
     width: calc(100% - 150px);
-    height: 1.4em;
+    height: 1.2em;
+    line-height: 1.1em;
     background-color: var(--main-05light-color);
     border: 1px solid var(--main-dark-color);
     padding-left: 0.2em;

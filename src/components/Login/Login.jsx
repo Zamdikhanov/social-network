@@ -15,10 +15,9 @@ const Login = (props) => {
     )
 }
 
-const LoginForm = ({isAuth, login}) => {
-
-    if (isAuth){
-        return <Navigate to = "/profile/" />
+const LoginForm = ({ isAuth, captchaURL, login }) => {
+    if (isAuth) {
+        return <Navigate to="/profile/" />
     }
 
     return (
@@ -27,16 +26,18 @@ const LoginForm = ({isAuth, login}) => {
                 email: '',
                 password: '',
                 rememberMe: false,
+                captcha: '',
             }}
             validationSchema={
                 Yup.object({
                     email: Yup.string().max(40, 'Слишком длинная почта').min(1).required('Пустое поле Email'),
                     password: Yup.string().max(20, 'Слишком длинный пароль').min(1).required('Пустое поле Password'),
                     rememberMe: Yup.boolean(),
+                    captcha: Yup.string().max(20, 'Слишком длинная капча'),
                 })
             }
-            onSubmit={ (values, { setSubmitting, setStatus})  => {
-                login(values.email, values.password, values.rememberMe, setStatus);
+            onSubmit={(values, { setSubmitting, setStatus }) => {
+                login(values.email, values.password, values.rememberMe, values.captcha, setStatus);
                 setSubmitting(false);
             }}
         >
@@ -64,16 +65,27 @@ const LoginForm = ({isAuth, login}) => {
                             Запомнить меня
                             <Field type='checkbox' id='rememberMe' name='rememberMe' />
                         </label>
+                        {captchaURL && <img className={styles.captcha_img} src={captchaURL} alt='captcha' />}
+                        {captchaURL && <Field type='text' id='captcha' name='captcha'
+                            className={styles.form_box__inputField
+                                + ' '
+                                + (props.touched.password && props.errors.password
+                                    ? styles.form_box__inputField_alert
+                                    : null)} />}
                         <button type="submit" disabled={false}>
                             Войти
                         </button>
                     </div>
-                    <div className={styles.messageAlert + ' ' + ((props.touched.email && props.errors.email) || (props.touched.password && props.errors.password) || (props.status) ? styles.messageAlert_active : null)} >
+                    <div className={styles.messageAlert
+                        + ' '
+                        + ((props.touched.email && props.errors.email)
+                            || (props.touched.password && props.errors.password)
+                            || (props.status) ? styles.messageAlert_active : null)} >
                         {props.touched.email && props.errors.email && <div>{props.errors.email}</div>}
                         {props.touched.password && props.errors.password && <div>{props.errors.password}</div>}
                         <div>{props.status}</div>
                     </div>
-                    
+
                 </Form>
             )}
         </Formik>
@@ -82,6 +94,7 @@ const LoginForm = ({isAuth, login}) => {
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
+    captchaURL: state.auth.captchaURL,
 })
 
 export default connect(mapStateToProps, { login })(Login);

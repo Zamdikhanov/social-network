@@ -18,14 +18,17 @@ const ProfileDataForm = (props) => {
         }
         validationSchema={
           Yup.object({
-            fullName: Yup.string().max(20, 'Слишком длинный Логин').min(1).required('Пустое поле login'),
+            fullName: Yup.string().max(20, 'Слишком длинный Логин')
+              .min(1).required('Пустое поле login'),
             lookingForAJob: Yup.boolean(),
-            lookingForAJobDescription: Yup.string().max(30, 'Слишком длинное описание').min(1).required('Пустое поле описание'),
-            aboutMe: Yup.string().max(40, 'Слишком иного о себе').min(1).required('Пустое поле о себе'),
-            
+            lookingForAJobDescription: Yup.string().max(800, 'Слишком длинное описание')
+              .min(1).required('Пустое поле описание'),
+            aboutMe: Yup.string().max(40, 'Слишком иного о себе')
+              .min(1).required('Пустое поле о себе'),
+
           })
         }
-        onSubmit={(values, {  }) => {
+        onSubmit={(values) => {
           props.saveProfile(values);
           props.goEditMode();
         }}
@@ -35,24 +38,34 @@ const ProfileDataForm = (props) => {
             <div className={styles.profile_info__title}>
               <label className={styles.form_box__input}>
                 Логин
-                <Field type='text' id='fullName' name='fullName' className={styles.form_inputLarge} />
+                <Field type='text' id='fullName' name='fullName'
+                  className={styles.form_inputLarge} />
                 {props.errors.fullName && props.touched.fullName ? (
-                  <div>{props.errors.fullName}</div>
+                  <div className={styles.alarm}>{props.errors.fullName}</div>
                 ) : null}
               </label>
             </div>
             <div className={styles.profile_info__about}>
               <label className={styles.form_box__input}>
                 Обо мне:
-                <Field type='text' id='aboutMe' name='aboutMe' className={styles.form_input} />
+                <Field type='text' id='aboutMe' name='aboutMe'
+                  className={styles.form_input} />
+                {props.errors.aboutMe && props.touched.aboutMe ? (
+                  <div className={styles.alarm}>{props.errors.aboutMe}</div>
+                ) : null}
               </label>
               <label >
                 В поисках работы:
-                <Field type='checkbox' id='lookingForAJob' name='lookingForAJob' className={styles.form_input} />
+                <Field type='checkbox' id='lookingForAJob' name='lookingForAJob'
+                  className={styles.form_input} />
               </label>
               <label className={styles.form_box__input}>
                 Описание работы:
-                <Field type='text' id='lookingForAJobDescription' name='lookingForAJobDescription' className={styles.form_input} />
+                <Field type='text' id='lookingForAJobDescription' name='lookingForAJobDescription'
+                  className={styles.form_input} />
+                {props.errors.lookingForAJobDescription && props.touched.lookingForAJobDescription ? (
+                  <div className={styles.alarm}>{props.errors.lookingForAJobDescription}</div>
+                ) : null}
               </label>
             </div>
             <div className={styles.profile_info__contact}>
