@@ -10,6 +10,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/Common/Preloader/Preloader';
+import Content from './components/Content/Content';
 
 
 class App extends React.Component {
@@ -37,7 +38,7 @@ class App extends React.Component {
                             <Route path="/users"
                                 element={< UsersContainer />} />
                             <Route path="/content"
-                                element={< div />} />
+                                element={< Content />} />
                             <Route path="/login"
                                 element={< Login />} />
                         </Routes>

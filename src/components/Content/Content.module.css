@@ -1,0 +1,45 @@
+.main {
+    padding: 10px;
+}
+
+.main_content {
+    margin: 10px 0;
+}
+
+.main_content__text {
+    margin-bottom: 20px;
+}
+
+.main_content a {
+    margin: 0 0.5em;
+    font-weight: 700;
+}
+
+.main_content__quote {
+    background-color: var(--main-05light-color);
+    border: 1px solid var(--main-dark-color);
+    border-radius: 10px;
+    width: 70%;
+    margin: 20px auto;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.video_container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden
+}
+
+.video_container iframe,
+.video_container object,
+.video_container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
